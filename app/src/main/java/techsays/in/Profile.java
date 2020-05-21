@@ -30,7 +30,7 @@ import com.squareup.picasso.Picasso;
 
 
 public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    ImageView webview,profile,navprofile;
+    ImageView webview,profile,backarrow;
     TextView name,email;
     private static final int ACTIVITY_NUM = 4;
     private AppBarConfiguration mAppBarConfiguration;
@@ -58,6 +58,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 //        navprofile=findViewById(R.id.navprofile);
+        backarrow=findViewById(R.id.backarrow);
 
         webview=findViewById(R.id.webviewtwchsays);
         name=findViewById(R.id.profilename);
@@ -81,6 +82,21 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
             }
         });
+
+        backarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                final Intent logg = new Intent(Profile.this, Home.class);
+
+                startActivity(logg);
+
+
+            }
+        });
+
+
     }
 
 

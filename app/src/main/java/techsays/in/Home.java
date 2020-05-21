@@ -382,9 +382,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
 
         if (id == R.id.nav_home) {
             Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_contact) {
 
         }
 
