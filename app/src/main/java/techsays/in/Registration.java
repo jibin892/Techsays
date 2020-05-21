@@ -43,7 +43,10 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+SharedPreferences phonepref=getSharedPreferences("myphone",MODE_PRIVATE);
+SharedPreferences.Editor editor=phonepref.edit();
+editor.putString("ph",phone.getText().toString());
+editor.apply();
 
                 {
 

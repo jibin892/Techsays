@@ -14,7 +14,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -24,11 +28,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -36,16 +50,19 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ImageView webview,profile,backarrow;
     TextView name,email;
+     FirebaseUser user;
     private static final int ACTIVITY_NUM = 4;
     private AppBarConfiguration mAppBarConfiguration;
     private static final String TAG = "SearchActivity";
     private Context mContext = Profile.this;
 SharedPreferences sh;
+    SharedPreferences phonepref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drwer);
         setupBottomNavigationView();
+       phonepref=getSharedPreferences("myphone",MODE_PRIVATE);
 
         sh = getSharedPreferences("log", MODE_PRIVATE);
 
@@ -64,7 +81,7 @@ SharedPreferences sh;
         ImageView profileImageView = headerView.findViewById(R.id.navprofile);
         TextView navname = headerView.findViewById(R.id.navname);
 
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 //        navprofile=findViewById(R.id.navprofile);
         backarrow=findViewById(R.id.backarrow);
 
@@ -185,14 +202,15 @@ SharedPreferences sh;
             new SweetAlertDialog(Profile.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Are you sure?")
                     .setContentText("Call Back Now")
-                    .setConfirmText("Delete!")
+                    .setConfirmText("Yes!")
                     .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
+                            callback();
                             sDialog.dismissWithAnimation();
                         }
                     })
-                    .setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
+                    .setCancelButton("Not Now", new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
                             sDialog.dismissWithAnimation();
@@ -201,24 +219,18 @@ SharedPreferences sh;
                     .show();
         }
         else if (id == R.id.nav_share) {
+            Bitmap imgBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.reward);
+            String imgBitmapPath = MediaStore.Images.Media.insertImage(getContentResolver(),imgBitmap,"Techsays",null);
+            Uri imgBitmapUri = Uri.parse(imgBitmapPath);
 
-
-            try {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Techsays");
-                String shareMessage= "\nLet me recommend you this application\n\n";
-                shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-                startActivity(Intent.createChooser(shareIntent, "choose one"));
-            } catch(Exception e) {
-                //e.toString();
-            }
-
-
-
-
-
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            shareIntent.putExtra(Intent.EXTRA_STREAM,imgBitmapUri);
+            shareIntent.setType("*/*");
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Download Techsays's Official App From Play Store:https://play.google.com/store/apps/details?id="+getPackageName()+"\n"+" And get Recharged Your Phone with Our Watch and earn Task.For ,More detials contact us +91 9847423836, +91 8848968113");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Techsays");
+            startActivity(Intent.createChooser(shareIntent, "Share this"));
         }
         else if (id == R.id.nav_logout) {
 
@@ -287,6 +299,49 @@ SharedPreferences sh;
         menuItem.setChecked(true);
     }
 
+
+public void callback()
+{
+    StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://dress-metal.000webhostapp.com/sms.php",
+            new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+
+/* if (response.equals("success")) {
+
+Toast.makeText(MainActivity.this, "success upload", Toast.LENGTH_SHORT).show();
+//Creating a shared preference
+
+} else {
+Toast.makeText(MainActivity.this, "success failed", Toast.LENGTH_SHORT).show();
+//If the server response is not success
+//Displaying an error message on toast
+// Toast.makeText(VerificationActivity.this,"success upload fail",Toast.LENGTH_SHORT).show();
+}*/
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+//You can handle error here if you want
+                }
+
+            }) {
+
+        @Override
+        protected Map<String, String> getParams() throws AuthFailureError {
+            Map<String, String> params = new HashMap<>();
+//Adding parameters to request
+            params.put("num", phonepref.getString("ph",null));
+            params.put("name",user.getDisplayName());
+//returning parameter
+            return params;
+        }
+    };
+    RequestQueue requestQueue = Volley.newRequestQueue(Profile.this);
+    requestQueue.add(stringRequest);
+}
 }
 
 

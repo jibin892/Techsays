@@ -61,7 +61,6 @@ public class Settings extends AppCompatActivity {
         AlertDialog m=mbuilder.create();
         m.show();
     }
-
     private void setLocale(String hi) {
         Locale locale=new Locale(hi);
         Locale.setDefault(locale);
@@ -72,8 +71,6 @@ public class Settings extends AppCompatActivity {
         SharedPreferences.Editor editor=sh.edit();
         editor.putString("my",hi);
         editor.apply();
-
-
     }
     public void loadLocale()
     {
