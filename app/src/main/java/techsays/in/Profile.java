@@ -10,8 +10,10 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -36,12 +38,16 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
     private AppBarConfiguration mAppBarConfiguration;
     private static final String TAG = "SearchActivity";
     private Context mContext = Profile.this;
-
+SharedPreferences sh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drwer);
         setupBottomNavigationView();
+
+        sh = getSharedPreferences("log", MODE_PRIVATE);
+
+
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ImageView menuIcon = (ImageView) findViewById(R.id.navbtn);
         menuIcon.setOnClickListener(new View.OnClickListener(){
@@ -139,26 +145,100 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_contact) {
+            final Intent log12 = new Intent(Profile.this, Home.class);
+
+            startActivity(log12);        }
+
+
+        else if (id == R.id.nav_contact) {
+
+
+            final Intent log12 = new Intent(Profile.this, Contacts.class);
+
+            startActivity(log12);
+
+
+        }
+        else if (id == R.id.nav_about) {
+
+            final Intent log13 = new Intent(Profile.this, About_us.class);
+
+            startActivity(log13);
+
+
+        }
+
+
+        else if (id == R.id.nav_settings) {
+
+            final Intent log13 = new Intent(Profile.this, Settings.class);
+
+            startActivity(log13);
+
+
+        }
+        else if (id == R.id.nav_callbackk) {
+
+         Toast.makeText(getApplicationContext(),"test cal back",Toast.LENGTH_LONG).show();
+
+        }
+        else if (id == R.id.nav_share) {
+
+            Toast.makeText(getApplicationContext(),"test share",Toast.LENGTH_LONG).show();
+
+        }
+        else if (id == R.id.nav_logout) {
+
+
+
+            final ProgressDialog progress = new ProgressDialog(Profile.this);
+            progress.setTitle("Loading");
+            progress.setMessage("Wait while loading...");
+            progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+            progress.show();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user.getUid() != null) {
+
+                final SharedPreferences sh1 = getSharedPreferences("userdatastemp", MODE_PRIVATE);
+
+                SharedPreferences.Editor ee = sh1.edit();
+
+                ee.putString("id", user.getUid());
+                ee.putString("name", user.getDisplayName());
+                ee.putString("email", user.getEmail());
+                ee.putString("pid", user.getProviderId());
+                ee.putString("image", String.valueOf(user.getPhotoUrl()));
+
+                ee.apply();
+
+
+                // user is now signed out
+                SharedPreferences.Editor e = sh.edit();
+                e.clear();
+                e.apply();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                // finish();
+
+                progress.dismiss();
+
+
+            } else {
+                Toast.makeText(getApplicationContext(), "somthing Wrong", Toast.LENGTH_LONG).show();
+
+
+            }
 
 
 
 
         }
-     else if (id == R.id.nav_logout) {
 
 
 
 
-
-
-
-    }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(Gravity.RIGHT);
         return true;
     }
 

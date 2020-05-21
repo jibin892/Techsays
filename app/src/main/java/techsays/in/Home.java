@@ -381,15 +381,98 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_contact) {
+            final Intent log12 = new Intent(Home.this, Home.class);
+
+            startActivity(log12);        }
+
+
+        else if (id == R.id.nav_contact) {
+
+
+            final Intent log12 = new Intent(Home.this, Contacts.class);
+
+            startActivity(log12);
+
+
+        }
+        else if (id == R.id.nav_about) {
+
+            final Intent log13 = new Intent(Home.this, About_us.class);
+
+            startActivity(log13);
+
 
         }
 
+
+        else if (id == R.id.nav_settings) {
+
+            final Intent log13 = new Intent(Home.this, Settings.class);
+
+            startActivity(log13);
+
+
+        }
+        else if (id == R.id.nav_callbackk) {
+
+            Toast.makeText(getApplicationContext(),"test cal back",Toast.LENGTH_LONG).show();
+
+        }
+        else if (id == R.id.nav_share) {
+
+            Toast.makeText(getApplicationContext(),"test share",Toast.LENGTH_LONG).show();
+
+        }
+        else if (id == R.id.nav_logout) {
+
+
+
+            final ProgressDialog progress = new ProgressDialog(Home.this);
+            progress.setTitle("Loading");
+            progress.setMessage("Wait while loading...");
+            progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
+            progress.show();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user.getUid() != null) {
+
+                final SharedPreferences sh1 = getSharedPreferences("userdatastemp", MODE_PRIVATE);
+
+                SharedPreferences.Editor ee = sh1.edit();
+
+                ee.putString("id", user.getUid());
+                ee.putString("name", user.getDisplayName());
+                ee.putString("email", user.getEmail());
+                ee.putString("pid", user.getProviderId());
+                ee.putString("image", String.valueOf(user.getPhotoUrl()));
+
+                ee.apply();
+
+
+                // user is now signed out
+                SharedPreferences.Editor e = sh.edit();
+                e.clear();
+                e.apply();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                // finish();
+
+                progress.dismiss();
+
+
+            } else {
+                Toast.makeText(getApplicationContext(), "somthing Wrong", Toast.LENGTH_LONG).show();
+
+
+            }
+
+
+
+
+        }
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout1);
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawer(Gravity.LEFT);
         return true;
     }
 
