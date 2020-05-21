@@ -14,7 +14,7 @@
             android:icon="@drawable/ic_home_black_24dp"
             app:showAsAction="ifRoom"/>
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_contact"
             android:icon="@drawable/ic_local_phone_black_24dp"
             android:title="Contact" />
 
@@ -29,7 +29,7 @@
 
 
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_share"
             android:icon="@drawable/ic_local_phone_black_24dp"
             android:title="Call Back" />
 
@@ -39,17 +39,17 @@
     android:id="@+id/uio">
 
         <item
-            android:id="@+id/nav_gallery1"
+            android:id="@+id/nav_about"
             android:icon="@drawable/ic_about_black_24dp"
             android:title="About Us" />
 
         <item
-            android:id="@+id/nav_slid1eshow"
+            android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="Settings" />
 
         <item
-            android:id="@+id/logout"
+            android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout_24dp"
             android:title="Logout" />
 

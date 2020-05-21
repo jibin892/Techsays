@@ -124,12 +124,15 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
         if (id == R.id.nav_home) {
             Toast.makeText(getApplicationContext(),"ok",Toast.LENGTH_LONG).show();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_contact) {
+
+            
+
 
         }
-     else if (id == R.id.logout) {
+     else if (id == R.id.nav_logout) {
 
 
 
