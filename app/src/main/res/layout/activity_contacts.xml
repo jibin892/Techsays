@@ -6,16 +6,284 @@
     android:layout_height="match_parent"
     tools:context=".Contacts">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/gradient"
+        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="194dp"
-        android:layout_height="45dp"
-        android:text="CONTACT"
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="353dp"
+            android:layout_height="70dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="15dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_back_24dp"
+                android:tint="#FFFFFF" />
+
+            <ImageView
+                android:id="@+id/imageVdiew"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/padding_10"
+                android:scaleType="centerCrop"
+                android:src="@drawable/techsays"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:optRoundCardCornerRadius="50dp"
+        app:optRoundCardElevation="0dp"
+        app:optRoundCardLeftBottomCorner="false"
+        app:optRoundCardLeftTopCorner="true"
+        app:optRoundCardRightBottomCorner="false"
+        app:optRoundCardRightTopCorner="true"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="80dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="72dp"
+                    android:layout_height="67dp"
+                    android:src="@drawable/logo"
+                    android:layout_gravity="center"
+                    android:textColor="#191919"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:text="Techsays Software Solution Pvt Ltd"
+                    android:drawableTint="#696969"
+                    android:padding="15dp"
+                    android:textColor="#191919"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="190dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/padding_10"
+                    android:layout_gravity="center"
+                    android:background="#696969" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@android:color/transparent"
+                    android:text=" 9744613979"
+                    android:drawableEnd="@drawable/ic_local_phone_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:textColor="@color/black"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@android:color/transparent"
+                    android:text=" contact@techsays"
+                    android:drawableEnd="@drawable/ic_email_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:textColor="#191919"
+                    android:padding="15dp"
+
+                    android:textColorHint="#696969"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@android:color/transparent"
+                    android:text="  2nd Floor,Karukappadath Building Changampuzha Park Metro Station,Ernakulam, Edappally, Kochi, Kerala 682024"
+                    android:drawableEnd="@drawable/ic_home_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:textColor="#191919"
+                    android:padding="15dp"
+
+                    android:textColorHint="#696969"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/padding_10"
+                    android:background="@android:color/transparent"
+                    android:drawableEnd="@drawable/ic_access_time_black_24dp"
+                    android:text=" 9:00am to 7:00pm"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:textColor="#191919"
+                    android:padding="15dp"
+
+                    android:textColorHint="#696969"
+                    />
+
+
+                <LinearLayout
+                    android:id="@+id/bokkmfarkpage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="16dp"
+                    android:layout_marginTop="125dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:background="?attr/selectableItemBackground">
+
+                    <RelativeLayout
+                        android:id="@+id/faceBookBtnlogout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="@dimen/login_screen_button_margin"
+                        android:background="@drawable/facebook_button_bg"
+                        android:elevation="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:paddingLeft="@dimen/large_intrinsic_padding"
+                            android:paddingRight="@dimen/large_intrinsic_padding"
+                            app:srcCompat="@drawable/ic_bt_login_facebook"
+                            tools:ignore="VectorDrawableCompat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textColor="@drawable/login_button_text_selector" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/sign_in_buttonlogout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="@dimen/_50sdp"
+                        android:layout_marginBottom="@dimen/login_screen_button_margin"
+                        android:background="@drawable/google_button_bg"
+                        android:elevation="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:paddingLeft="@dimen/large_intrinsic_padding"
+                            android:paddingRight="@dimen/large_intrinsic_padding"
+                            app:srcCompat="@drawable/ic_bt_login_google"
+                            tools:ignore="VectorDrawableCompat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textColor="@drawable/login_button_text_selector" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/instagramlogout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_gravity="center_horizontal"
+
+                        android:layout_marginLeft="@dimen/_50sdp"
+                        android:layout_marginBottom="@dimen/login_screen_button_margin"
+                        android:background="@drawable/email_button_bg"
+                        android:elevation="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:paddingLeft="@dimen/large_intrinsic_padding"
+                            android:paddingRight="@dimen/large_intrinsic_padding"
+                            app:srcCompat="@drawable/email"
+                            tools:ignore="VectorDrawableCompat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textColor="@drawable/login_button_text_selector" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
