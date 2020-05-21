@@ -10,6 +10,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -41,11 +42,13 @@ public class Settings extends AppCompatActivity {
                 {
                     setLocale("en");
                     recreate();
+                    Toast.makeText(Settings.this, "English", Toast.LENGTH_SHORT).show();
                 }
                 else  if(which==1)
                 {
                     setLocale("hi");
                     recreate();
+                    Toast.makeText(Settings.this, "Hindi", Toast.LENGTH_SHORT).show();
                 }
                 else  if(which==2)
                 {
@@ -64,7 +67,7 @@ public class Settings extends AppCompatActivity {
         Locale.setDefault(locale);
         Configuration configuration=new Configuration();
         configuration.locale=locale;
-        getBaseContext().getResources().updateConfiguration(configuration,getBaseContext().getResources().getDisplayMetrics());
+       getResources().updateConfiguration(configuration,getResources().getDisplayMetrics());
         SharedPreferences sh=getSharedPreferences("Settings",MODE_PRIVATE);
         SharedPreferences.Editor editor=sh.edit();
         editor.putString("my",hi);
