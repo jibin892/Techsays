@@ -57,7 +57,25 @@
 
     </group>
 
+    <group
+        android:checkableBehavior="none"
+        android:id="@+id/uioq">
 
+        <item
+            android:title=""
+            app:showAsAction="ifRoom"/>
+        <item
+            android:title=""
+            app:showAsAction="ifRoom"/>
+        <item
+            android:title=""
+            app:showAsAction="ifRoom"/>
+
+<item
+    android:title="Powered By Techsays Software Solution "
+        />
+
+    </group>
 
 
 </menu>
