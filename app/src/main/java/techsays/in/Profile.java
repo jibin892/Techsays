@@ -128,7 +128,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
         } else if (id == R.id.nav_contact) {
 
-            
+
 
 
         }
