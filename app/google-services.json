@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "837748716955",
+    "firebase_url": "https://techsays-software-solution.firebaseio.com",
+    "project_id": "techsays-software-solution",
+    "storage_bucket": "techsays-software-solution.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837748716955:android:363edb51d173d9ee5b5d3e",
+        "android_client_info": {
+          "package_name": "techsays.in"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837748716955-v0h6993sf6vp5533cl4kv989e1h450cm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "techsays.in",
+            "certificate_hash": "1c62e85756632ba01854909c9982888ac3abeafd"
+          }
+        },
+        {
+          "client_id": "837748716955-jk1s6d1vf3k6v24ro284kei1hd7om2iv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6UivVzbeLR7J_5ArPwRVmRQlV8wj8Snw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837748716955-jk1s6d1vf3k6v24ro284kei1hd7om2iv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
