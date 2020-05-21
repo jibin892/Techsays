@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Techsays</string>
+    <string name="skip">ഒഴിവാക്കുക</string>
+    <string name="start">ആരംഭിക്കുക</string>
+    <string name="next">അടുത്തത്</string>
+    <string name="title_activity_hompage">ഹോംപേജ്</string>
+    <string name="title_home">വീട്</string>
+    <string name="title_dashboard">ഡാഷ്ബോർഡ്</string>
+    <string name="title_notifications">അറിയിപ്പുകൾ</string>
+</resources>

@@ -167,7 +167,7 @@
                     android:layout_gravity="center"
                     android:paddingTop="@dimen/padding_10"
                     android:background="@android:color/transparent"
-                    android:drawableEnd="@drawable/ic_access_time_black_24dp"
+
                     android:text=" 9:00am to 7:00pm"
                     android:drawableTint="@color/colorPrimaryDark"
                     android:textColor="#191919"
