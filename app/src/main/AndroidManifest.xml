@@ -17,8 +17,12 @@
         <activity android:name=".Settings" />
         <activity android:name=".AndroidCourese"/>
         <activity android:name=".Webwiewtechsays" />
+        <activity android:name=".AndroidCourese" />
+        <activity android:name=".Syllabus_webview" />
+        <activity android:name=".Couresregistartion" />
         <activity android:name=".Registration" />
         <activity android:name=".Contacts" />
+        <activity android:name=".Digital_MarketingCourese" />
         <activity android:name=".Youtube" />
         <activity android:name=".Profile" />
         <activity android:name=".Notification" />

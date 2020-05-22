@@ -34,7 +34,7 @@ import com.squareup.picasso.Picasso;
 import static android.content.Context.MODE_PRIVATE;
 public class CourseFirstFragment extends Fragment  {
     View root;
-    TextView androidbtn;
+    TextView androidbtn,digitalbtn;
     ImageView profileimghome,nav,msg;
     SharedPreferences sh1, sh;
     ImageView profileimglogout;
@@ -48,6 +48,7 @@ FloatingActionButton contact;
 
 androidbtn=root.findViewById(R.id.androidcouresebtn);
 
+        digitalbtn=root.findViewById(R.id.digitalmarktinfo);
 
 
 
@@ -70,6 +71,26 @@ androidbtn.setOnClickListener(new View.OnClickListener() {
 
 
 });
+
+
+
+        digitalbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent log = new Intent(getActivity(), Digital_MarketingCourese.class);
+                log.putExtra("aa",a);
+                startActivity(log);
+
+
+            }
+
+
+
+        });
+
+
 
         return root;
     }
