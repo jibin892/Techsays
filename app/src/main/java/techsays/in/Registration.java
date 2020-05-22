@@ -2,6 +2,7 @@ package techsays.in;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -46,7 +47,12 @@ public class Registration extends AppCompatActivity {
 
 
                 {
+                    final ProgressDialog progress = new ProgressDialog(Registration.this);
 
+                    progress.setMessage("Sigun up ");
+                    progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    //  progress.setIndeterminate(true);
+                    progress.show();
                     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     DatabaseReference object = FirebaseDatabase.getInstance().getReference();
@@ -90,7 +96,7 @@ public class Registration extends AppCompatActivity {
                             ee.apply();
 
                             startActivity(log);
-
+                            progress.dismiss();
                         }
 
                         @Override

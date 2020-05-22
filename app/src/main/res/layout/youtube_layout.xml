@@ -35,7 +35,6 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/padding_10"
             android:layout_weight="1"
-            android:scaleType="centerCrop"
             android:src="@drawable/techsays"
             tools:ignore="MissingConstraints" />
     </LinearLayout>

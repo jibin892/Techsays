@@ -254,7 +254,11 @@ public class Login extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
 // Successfully signed in
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+                final ProgressDialog progress = new ProgressDialog(Login.this);
+                progress.setMessage("Login ");
+                progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                //  progress.setIndeterminate(true);
+                progress.show();
                 if(user!=null){
                     DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("REGISTRATION");
                     userRef
@@ -279,7 +283,7 @@ public class Login extends AppCompatActivity {
                                         ee.apply();
 
                                         startActivity(log);
-
+progress.dismiss();
 
 
                                     } else {
