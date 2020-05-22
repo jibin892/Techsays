@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "837748716955",
-    "firebase_url": "https://techsays-software-solution.firebaseio.com",
-    "project_id": "techsays-software-solution",
-    "storage_bucket": "techsays-software-solution.appspot.com"
+    "project_number": "128151881185",
+    "firebase_url": "https://techsays-app.firebaseio.com",
+    "project_id": "techsays-app",
+    "storage_bucket": "techsays-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:837748716955:android:363edb51d173d9ee5b5d3e",
+        "mobilesdk_app_id": "1:128151881185:android:9b09286f558f20d0e93ea0",
         "android_client_info": {
-          "package_name": "techsays.in"
+          "package_name": "in.techsays"
         }
       },
       "oauth_client": [
         {
-          "client_id": "837748716955-v0h6993sf6vp5533cl4kv989e1h450cm.apps.googleusercontent.com",
+          "client_id": "128151881185-t13vkkle3itlc34e97akgvv2i9qjrj3f.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "techsays.in",
-            "certificate_hash": "1c62e85756632ba01854909c9982888ac3abeafd"
+            "package_name": "in.techsays",
+            "certificate_hash": "de071d6718cb8b12d1f3f8c892c3ce010932b25d"
           }
         },
         {
-          "client_id": "837748716955-jk1s6d1vf3k6v24ro284kei1hd7om2iv.apps.googleusercontent.com",
+          "client_id": "128151881185-svu3stgvtv9o1q1u7qq7dckes5nuf2h7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA6UivVzbeLR7J_5ArPwRVmRQlV8wj8Snw"
+          "current_key": "AIzaSyC-Czk-1-695jsrWtA_H4hSmr02l6K5XPo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "837748716955-jk1s6d1vf3k6v24ro284kei1hd7om2iv.apps.googleusercontent.com",
+              "client_id": "128151881185-svu3stgvtv9o1q1u7qq7dckes5nuf2h7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
