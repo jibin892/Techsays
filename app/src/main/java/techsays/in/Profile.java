@@ -78,6 +78,7 @@ SharedPreferences sh;
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
+        TextView navemail = headerView.findViewById(R.id.navemail);
         ImageView profileImageView = headerView.findViewById(R.id.navprofile);
         TextView navname = headerView.findViewById(R.id.navname);
 
@@ -93,6 +94,7 @@ SharedPreferences sh;
         name.setText(user.getDisplayName());
         Picasso.get().load(String.valueOf(user.getPhotoUrl())).into(profileImageView);
         navname.setText(user.getDisplayName());
+        navemail.setText(user.getEmail());
 
         email.setText(user.getEmail());
         webview.setOnClickListener(new View.OnClickListener() {

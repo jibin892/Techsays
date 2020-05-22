@@ -16,8 +16,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -98,12 +101,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
                 }
             });
             NavigationView navigationView = findViewById(R.id.nav_view1);
+            navigationView.setItemIconTintList(null);
             navigationView.setNavigationItemSelectedListener(this);
 
             View headerView = navigationView.getHeaderView(0);
             ImageView profileImageView = headerView.findViewById(R.id.navprofile);
             TextView navname = headerView.findViewById(R.id.navname);
-
+            TextView navemail = headerView.findViewById(R.id.navemail);
+            navemail.setText(user.getEmail());
             Picasso.get().load(String.valueOf(user.getPhotoUrl())).into(profileImageView);
             navname.setText(user.getDisplayName());
 
@@ -115,6 +120,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
             msg = findViewById(R.id.msg);
             Button logout = bottomSheetDialogView.findViewById(R.id.logout);
             profileimglogout = bottomSheetDialogView.findViewById(R.id.profileimglogout);
+            TextView logoutemail = bottomSheetDialogView.findViewById(R.id.logoutemail);
+
+
             TextView logoutname = bottomSheetDialogView.findViewById(R.id.logoutname);
             RelativeLayout facebook = bottomSheetDialogView.findViewById(R.id.faceBookBtnlogout);
             RelativeLayout googel = bottomSheetDialogView.findViewById(R.id.sign_in_buttonlogout);
@@ -122,6 +130,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
             Picasso.get().load(String.valueOf(user.getPhotoUrl())).into(profileimglogout);
             logoutname.setText(user.getDisplayName());
             usernamedisplay.setText(user.getDisplayName());
+            logoutemail.setText(user.getEmail());
 
 
 
@@ -440,19 +449,18 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
         }
         else if (id == R.id.nav_share) {
 
-            try {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Techsays");
-                String shareMessage= "\nLet me recommend you this application\n\n";
-                shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-                startActivity(Intent.createChooser(shareIntent, "choose one"));
-            } catch(Exception e) {
-                //e.toString();
-            }
+            Bitmap imgBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.reward);
+            String imgBitmapPath = MediaStore.Images.Media.insertImage(getContentResolver(),imgBitmap,"Techsays",null);
+            Uri imgBitmapUri = Uri.parse(imgBitmapPath);
 
-
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            shareIntent.putExtra(Intent.EXTRA_STREAM,imgBitmapUri);
+            shareIntent.setType("*/*");
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Download Techsays's Official App From Play Store:https://play.google.com/store/apps/details?id="+getPackageName()+"\n"+" And get Recharged Your Phone with Our Watch and earn Task.For ,More detials contact us +91 9847423836, +91 8848968113");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Techsays");
+            startActivity(Intent.createChooser(shareIntent, "Share this"));
 
         }
         else if (id == R.id.nav_logout) {

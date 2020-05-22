@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Techsays</string>
-    <string name="facebook_application_id">296323251058351</string>
+    <string name="facebook_application_id" translatable="false">296323251058351</string>
     <string name="skip">SKIP</string>
     <string name="start">START</string>
     <string name="next">NEXT</string>
@@ -9,6 +9,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="Profile" translatable="false">Profile</string>
 
     <array name="icons">
         <item>@drawable/ic_bt_login_facebook</item>

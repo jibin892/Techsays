@@ -34,15 +34,25 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/optRoundCardView" />
+
     <TextView
+        android:id="@+id/logoutname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:id="@+id/logoutname"
         android:layout_gravity="center"
-        android:textColor="@android:color/black"/>
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
-
+    <TextView
+        android:id="@+id/logoutemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/_27sdp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
     <Button
         android:id="@+id/logout"
         android:layout_width="107dp"
