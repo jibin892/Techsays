@@ -475,7 +475,7 @@
                             </LinearLayout>
 
                             <TextView
-                                android:id="@+id/androidcouresebtn"
+                                android:id="@+id/digitalmarktinfo"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
