@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,12 +14,14 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class Webwiewtechsays extends AppCompatActivity {
+public class Syllabus_webview extends AppCompatActivity {
+Intent link;
     WebView web;
     ConstraintLayout vie;
 
@@ -31,32 +34,31 @@ public class Webwiewtechsays extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_webwiewtechsays);
-        web=findViewById(R.id.web);
-        vie=findViewById(R.id.vie1);
-
-        imageView4 = findViewById(R.id.imageView4);
+       setContentView(R.layout.activity_syllabus_webview);
+        web=findViewById(R.id.web1);
+        vie=findViewById(R.id.vie11);
+link=getIntent();
 
         s = Snackbar.make(vie, "PLZ WAIT ", Snackbar.LENGTH_LONG);
         View snackBarView = s.getView();
         snackBarView.setBackgroundColor(R.color.colorPrimary);
         s.show();
-
+        Toast.makeText(getApplicationContext(),link.getStringExtra("syllabus"),Toast.LENGTH_LONG).show();
 
         web.setInitialScale(1);
         web.getSettings().setLoadWithOverviewMode(true);
         web.getSettings().setUseWideViewPort(true);
         web.getSettings().getDisplayZoomControls();
-        web.setWebViewClient(new WebViewClient());
+        web.setWebViewClient(new Webwiewtechsays.WebViewClient());
         web.getSettings().setLoadsImagesAutomatically(true);
         web.getSettings().setJavaScriptEnabled(true);
         web.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        web.loadUrl("https://techsays.in");
+        web.loadUrl(link.getStringExtra("syllabus"));
         web.setPadding(0, 0, 0, 0);
         web.getSettings().setLoadWithOverviewMode(true);
         web.getSettings().setUseWideViewPort(true);
     }
-    public static class WebViewClient extends android.webkit.WebViewClient {
+    public class WebViewClient extends android.webkit.WebViewClient {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
@@ -69,7 +71,6 @@ public class Webwiewtechsays extends AppCompatActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            //imageView4.setVisibility(View.INVISIBLE);
         }
     }
     @Override

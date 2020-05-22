@@ -3,7 +3,8 @@
     package="techsays.in">
 
     <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".AppController"
         android:allowBackup="true"
@@ -12,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".About_us"/>
+        <activity android:name=".Syllabus_webview"></activity>
+        <activity android:name=".Couresregistartion" />
+        <activity android:name=".AndroidCourese" />
+        <activity android:name=".About_us" />
         <activity android:name=".Settings" />
         <activity android:name=".Webwiewtechsays" />
         <activity android:name=".Registration" />
@@ -22,21 +26,24 @@
         <activity android:name=".Notification" />
         <activity android:name=".Add_videos" />
         <activity android:name=".Home" />
-        <activity android:name=".VideoActivity"/>
+        <activity android:name=".VideoActivity" />
         <activity android:name=".Message" />
         <activity android:name=".Login" />
-        <activity android:name=".Splash"/>
+        <activity android:name=".Splash" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_application_id" />
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts"/>
+            android:resource="@array/preloaded_fonts" />
     </application>
+
 </manifest>

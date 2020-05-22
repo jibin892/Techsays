@@ -34,7 +34,7 @@ import com.squareup.picasso.Picasso;
 import static android.content.Context.MODE_PRIVATE;
 public class CourseFirstFragment extends Fragment  {
     View root;
-    TextView usernamedisplay;
+    TextView androidbtn;
     ImageView profileimghome,nav,msg;
     SharedPreferences sh1, sh;
     ImageView profileimglogout;
@@ -46,16 +46,30 @@ FloatingActionButton contact;
         sh1 = requireActivity().getSharedPreferences("LOGINDATA", MODE_PRIVATE);
         sh = getActivity().getSharedPreferences("log", MODE_PRIVATE);
 
+androidbtn=root.findViewById(R.id.androidcouresebtn);
 
 
 
 
 
 
+final String a="hfgdghf";
+
+androidbtn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+
+         Intent log = new Intent(getActivity(), AndroidCourese.class);
+        log.putExtra("aa",a);
+        startActivity(log);
+
+
+    }
 
 
 
-
+});
 
         return root;
     }

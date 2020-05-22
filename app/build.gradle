@@ -69,6 +69,9 @@ dependencies {
     implementation 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.6'
     implementation 'com.ramotion.circlemenu:circle-menu:0.3.1'
 
-
+    implementation('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
+        // exclusion is not necessary, but generally a good idea.
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
 }
 apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Couresregistartion">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/gradient"
+        tools:ignore="MissingConstraints" />
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <ImageView
+            android:id="@+id/coureback"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_arrow_back_24dp"
+            android:tint="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/imageVdiew"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:src="@drawable/techsays"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:optRoundCardCornerRadius="50dp"
+        app:optRoundCardElevation="0dp"
+        app:optRoundCardLeftBottomCorner="false"
+        app:optRoundCardLeftTopCorner="true"
+        app:optRoundCardRightBottomCorner="false"
+        app:optRoundCardRightTopCorner="true"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="80dp">
+                <TextView
+                    android:id="@+id/regname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrsation"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="#191919"
+                    android:layout_marginStart="30dp"/>
+
+                <EditText
+                    android:id="@+id/regqul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/circularbordersolid"
+                    android:layout_marginEnd="30dp"
+                    android:hint="  Basic Qualifications"
+                    android:backgroundTint="@color/grey"
+                    android:drawableStart="@drawable/ic_attachment_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:textColor="#191919"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/regph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:background="@drawable/circularbordersolid"
+                    android:hint="  Alternative number"
+                    android:drawableStart="@drawable/ic_local_phone_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:backgroundTint="@color/grey"
+
+                    android:textColor="#191919"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold" />
+
+
+
+                <EditText
+                    android:id="@+id/regage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/circularbordersolid"
+                    android:hint="  Age"
+                    android:inputType="number"
+                    android:backgroundTint="@color/grey"
+                    android:drawableStart="@drawable/ic_attachment_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:textColor="#191919"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold" />
+
+
+
+                <EditText
+                   android:id="@+id/regaddre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/circularbordersolid"
+                    android:hint="  Address"
+                    android:drawableStart="@drawable/ic_location_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:backgroundTint="@color/grey"
+
+                    android:inputType="textMultiLine"
+                    android:textColor="#191919"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold" />
+
+
+
+                <EditText
+                    android:id="@+id/regsat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/circularbordersolid"
+                    android:hint="  State"
+                    android:drawableStart="@drawable/ic_attachment_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:backgroundTint="@color/grey"
+                    android:textColor="#191919"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold" />
+
+
+
+
+                <EditText
+                    android:id="@+id/regdis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/circularbordersolid"
+                    android:hint="  dis"
+                    android:drawableStart="@drawable/ic_attachment_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:backgroundTint="@color/grey"
+
+                    android:textColor="#191919"
+                    android:textColorHint="#696969"
+                    android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/regbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="80dp"
+                    android:background="@drawable/homebutton"
+                    android:text="Registarion"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </ScrollView>
+
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

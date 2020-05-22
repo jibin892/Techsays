@@ -116,6 +116,13 @@
 
                         </LinearLayout>
                         <!--Experience Bottom Cards-->
+
+
+
+
+
+
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -142,6 +149,15 @@
                                     android:layout_weight="1" />
 
                             </LinearLayout>
+
+
+
+
+
+
+
+
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -184,7 +200,7 @@
                                         android:layout_height="40dp"
                                         android:background="@drawable/circular_grey_bordersolid"
                                         android:padding="10dp"
-                                        android:src="@drawable/ic_more_black_24dp" />
+                                        android:src="@drawable/ic_notifications_none_black_24dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -208,7 +224,30 @@
                                         android:layout_height="40dp"
                                         android:background="@drawable/circular_grey_bordersolid"
                                         android:padding="10dp"
-                                        android:src="@drawable/ic_location_24dp" />
+                                        android:src="@drawable/ic_code_black_24dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="20dp"
+                                        android:fontFamily="@font/proximanovaregular"
+                                        android:text="Leeds, United Kingdom"
+                                        android:textColor="@color/goodgrey"
+                                        android:textSize="15sp" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingRight="8dp">
+
+                                    <ImageView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:background="@drawable/circular_grey_bordersolid"
+                                        android:padding="10dp"
+                                        android:src="@drawable/ic_school_black_24dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -223,7 +262,7 @@
                             </LinearLayout>
 
                             <TextView
-                                android:id="@+id/personalinfobtn"
+                                android:id="@+id/androidcouresebtn"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -234,7 +273,7 @@
                                 android:gravity="center"
                                 android:padding="13dp"
 
-                                android:text=" Info"
+                                android:text="More Info"
                                 android:textAllCaps="true"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
@@ -293,6 +332,10 @@
 
                         </LinearLayout>
                         <!--Experience Bottom Cards-->
+
+
+
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -309,7 +352,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/proximanovaregular"
-                                    android:text="contact"
+                                    android:text="info"
                                     android:textSize="17sp"
                                     android:textStyle="bold" />
 
@@ -319,6 +362,15 @@
                                     android:layout_weight="1" />
 
                             </LinearLayout>
+
+
+
+
+
+
+
+
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -337,14 +389,14 @@
                                         android:layout_height="40dp"
                                         android:background="@drawable/circular_grey_bordersolid"
                                         android:padding="10dp"
-                                        android:src="@drawable/ic_call_24dp" />
+                                        android:src="@drawable/ic_access_time_black_24dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
                                         android:fontFamily="@font/proximanovaregular"
-                                        android:text="+91 7999193854"
+                                        android:text="3 to 6"
                                         android:textColor="@color/goodgrey"
                                         android:textSize="15sp" />
                                 </LinearLayout>
@@ -361,7 +413,7 @@
                                         android:layout_height="40dp"
                                         android:background="@drawable/circular_grey_bordersolid"
                                         android:padding="10dp"
-                                        android:src="@drawable/ic_email_24dp" />
+                                        android:src="@drawable/ic_notifications_none_black_24dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -385,7 +437,30 @@
                                         android:layout_height="40dp"
                                         android:background="@drawable/circular_grey_bordersolid"
                                         android:padding="10dp"
-                                        android:src="@drawable/ic_location_24dp" />
+                                        android:src="@drawable/ic_code_black_24dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="20dp"
+                                        android:fontFamily="@font/proximanovaregular"
+                                        android:text="Leeds, United Kingdom"
+                                        android:textColor="@color/goodgrey"
+                                        android:textSize="15sp" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingRight="8dp">
+
+                                    <ImageView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:background="@drawable/circular_grey_bordersolid"
+                                        android:padding="10dp"
+                                        android:src="@drawable/ic_school_black_24dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -400,7 +475,7 @@
                             </LinearLayout>
 
                             <TextView
-                                android:id="@+id/personalinfnhobtn"
+                                android:id="@+id/androidcouresebtn"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -411,7 +486,7 @@
                                 android:gravity="center"
                                 android:padding="13dp"
 
-                                android:text=" Info"
+                                android:text="More Info"
                                 android:textAllCaps="true"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
@@ -497,6 +572,11 @@
 
                         </LinearLayout>
                         <!--Experience Bottom Cards-->
+
+
+
+
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -513,7 +593,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/proximanovaregular"
-                                    android:text="contact"
+                                    android:text="info"
                                     android:textSize="17sp"
                                     android:textStyle="bold" />
 
@@ -523,6 +603,15 @@
                                     android:layout_weight="1" />
 
                             </LinearLayout>
+
+
+
+
+
+
+
+
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -541,14 +630,14 @@
                                         android:layout_height="40dp"
                                         android:background="@drawable/circular_grey_bordersolid"
                                         android:padding="10dp"
-                                        android:src="@drawable/ic_call_24dp" />
+                                        android:src="@drawable/ic_access_time_black_24dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="20dp"
                                         android:fontFamily="@font/proximanovaregular"
-                                        android:text="+91 7999193854"
+                                        android:text="3 to 6"
                                         android:textColor="@color/goodgrey"
                                         android:textSize="15sp" />
                                 </LinearLayout>
@@ -565,7 +654,7 @@
                                         android:layout_height="40dp"
                                         android:background="@drawable/circular_grey_bordersolid"
                                         android:padding="10dp"
-                                        android:src="@drawable/ic_email_24dp" />
+                                        android:src="@drawable/ic_notifications_none_black_24dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -589,7 +678,30 @@
                                         android:layout_height="40dp"
                                         android:background="@drawable/circular_grey_bordersolid"
                                         android:padding="10dp"
-                                        android:src="@drawable/ic_location_24dp" />
+                                        android:src="@drawable/ic_code_black_24dp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="20dp"
+                                        android:fontFamily="@font/proximanovaregular"
+                                        android:text="Leeds, United Kingdom"
+                                        android:textColor="@color/goodgrey"
+                                        android:textSize="15sp" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center_vertical"
+                                    android:paddingRight="8dp">
+
+                                    <ImageView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:background="@drawable/circular_grey_bordersolid"
+                                        android:padding="10dp"
+                                        android:src="@drawable/ic_school_black_24dp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -604,7 +716,7 @@
                             </LinearLayout>
 
                             <TextView
-                                android:id="@+id/personaujlinfobtn"
+                                android:id="@+id/androidcouresebtn"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -615,7 +727,7 @@
                                 android:gravity="center"
                                 android:padding="13dp"
 
-                                android:text=" Info"
+                                android:text="More Info"
                                 android:textAllCaps="true"
                                 android:textColor="@color/white"
                                 android:textSize="14sp"
