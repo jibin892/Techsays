@@ -101,6 +101,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
                 }
             });
             NavigationView navigationView = findViewById(R.id.nav_view1);
+            navigationView.setItemIconTintList(null);
             navigationView.setNavigationItemSelectedListener(this);
 
             View headerView = navigationView.getHeaderView(0);
