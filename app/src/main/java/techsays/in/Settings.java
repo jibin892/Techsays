@@ -2,7 +2,6 @@ package techsays.in;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -11,12 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Locale;
-
 public class Settings extends AppCompatActivity {
     TextView cl;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +26,6 @@ public class Settings extends AppCompatActivity {
             }
         });
     }
-
     private void showlanguages() {
         final  String[] languages ={"English","हिन्दी","മലയാളം","தமிழ்","ಕನ್ನಡ","తెలుగు"};
         AlertDialog.Builder mbuilder=new AlertDialog.Builder(Settings.this);
@@ -69,7 +64,7 @@ public class Settings extends AppCompatActivity {
        getResources().updateConfiguration(configuration,getResources().getDisplayMetrics());
         SharedPreferences sh=getSharedPreferences("Settings",MODE_PRIVATE);
         SharedPreferences.Editor editor=sh.edit();
-        editor.putString("my",hi);
+        editor.putString("my","ml");
         editor.apply();
     }
     public void loadLocale()
@@ -77,5 +72,6 @@ public class Settings extends AppCompatActivity {
        SharedPreferences sharedPreferences=getSharedPreferences("Settings", Activity.MODE_PRIVATE);
        String language=sharedPreferences.getString("my","");
        setLocale(language);
+       Toast.makeText(Settings.this,language,Toast.LENGTH_LONG).show();
     }
 }
