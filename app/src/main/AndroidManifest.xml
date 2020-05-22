@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".About_us"/>
         <activity android:name=".Settings" />
+        <activity android:name=".AndroidCourese"/>
         <activity android:name=".Webwiewtechsays" />
         <activity android:name=".Registration" />
         <activity android:name=".Contacts" />
@@ -26,6 +27,8 @@
         <activity android:name=".VideoActivity"/>
         <activity android:name=".Message" />
         <activity android:name=".Login" />
+        <activity android:name=".Syllabus_webview"/>
+        <activity android:name=".Couresregistartion"/>
         <activity android:name=".Splash"/>
         <activity android:name=".WelcomeActivity">
             <intent-filter>
@@ -36,6 +39,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_application_id" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1385831625775129~9306990400"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts"/>
