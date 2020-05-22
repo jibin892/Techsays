@@ -256,10 +256,6 @@ public class Login extends AppCompatActivity {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                 if(user!=null){
-
-
-
-
                     DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("REGISTRATION");
                     userRef
                             .orderByChild("personPhoto")
@@ -274,7 +270,6 @@ public class Login extends AppCompatActivity {
                                         final SharedPreferences sh=getSharedPreferences("LOGINDATA",MODE_PRIVATE);
 
                                         SharedPreferences.Editor ee=sh.edit();
-
                                         ee.putString("id",user.getUid());
                                         ee.putString("name",user.getDisplayName());
                                         ee.putString("email",user.getEmail());

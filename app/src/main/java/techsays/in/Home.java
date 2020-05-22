@@ -1,21 +1,16 @@
 package techsays.in;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -42,11 +37,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 
+import java.util.Locale;
 import java.util.Objects;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-
-import static techsays.in.R.color.colorPrimary;
 
 
 public class Home extends AppCompatActivity implements View.OnClickListener ,NavigationView.OnNavigationItemSelectedListener {
@@ -68,7 +62,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
         @Override
         protected void onCreate(Bundle savedInstanceState) {
 
-
+loadLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drwer_home);
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -185,7 +179,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
         HomePageAdapter adapter = new HomePageAdapter(Home.this.getSupportFragmentManager());
         adapter.addFragment(new CourseFirstFragment());
         adapter.addFragment(new OnlineclassFragment());
-        adapter.addFragment(new CodeFragment());
+        adapter.addFragment(new WalletFragment());
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
@@ -193,9 +187,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
-        Objects.requireNonNull(tabLayout.getTabAt(0)).setText("Course");
-        Objects.requireNonNull(tabLayout.getTabAt(1)).setText("Class");
-        Objects.requireNonNull(tabLayout.getTabAt(2)).setText("Code");
+        Objects.requireNonNull(tabLayout.getTabAt(0)).setText(getString(R.string.course));
+        Objects.requireNonNull(tabLayout.getTabAt(1)).setText(getString(R.string.service));
+        Objects.requireNonNull(tabLayout.getTabAt(2)).setText(getString(R.string.wallet));
        // viewPager.setCurrentItem(1,false);
 
 
@@ -515,7 +509,24 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
         return true;
     }
 
+    public void setLocale(String hi) {
+        Locale locale=new Locale(hi);
+        Locale.setDefault(locale);
+        Configuration configuration=new Configuration();
+        configuration.locale=locale;
+        getResources().updateConfiguration(configuration,getResources().getDisplayMetrics());
+        SharedPreferences sh=getSharedPreferences("Settings",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sh.edit();
+        editor.putString("my",hi);
+        editor.apply();
+    }
+    public void loadLocale()
+    {
+        SharedPreferences sharedPreferences=getSharedPreferences("Settings",MODE_PRIVATE);
+        String language=sharedPreferences.getString("my","");
+        setLocale(language);
 
+    }
 
 }
 

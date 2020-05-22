@@ -37,13 +37,13 @@ public class Settings extends AppCompatActivity {
                 {
                     setLocale("en");
                     recreate();
-                    Toast.makeText(Settings.this, "English", Toast.LENGTH_SHORT).show();
+
                 }
                 else  if(which==1)
                 {
                     setLocale("hi");
                     recreate();
-                    Toast.makeText(Settings.this, "Hindi", Toast.LENGTH_SHORT).show();
+
                 }
                 else  if(which==2)
                 {
@@ -56,7 +56,7 @@ public class Settings extends AppCompatActivity {
         AlertDialog m=mbuilder.create();
         m.show();
     }
-    private void setLocale(String hi) {
+    public void setLocale(String hi) {
         Locale locale=new Locale(hi);
         Locale.setDefault(locale);
         Configuration configuration=new Configuration();
@@ -64,14 +64,14 @@ public class Settings extends AppCompatActivity {
        getResources().updateConfiguration(configuration,getResources().getDisplayMetrics());
         SharedPreferences sh=getSharedPreferences("Settings",MODE_PRIVATE);
         SharedPreferences.Editor editor=sh.edit();
-        editor.putString("my","ml");
+        editor.putString("my",hi);
         editor.apply();
     }
     public void loadLocale()
     {
-       SharedPreferences sharedPreferences=getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+       SharedPreferences sharedPreferences=getSharedPreferences("Settings",MODE_PRIVATE);
        String language=sharedPreferences.getString("my","");
        setLocale(language);
-       Toast.makeText(Settings.this,language,Toast.LENGTH_LONG).show();
+
     }
 }

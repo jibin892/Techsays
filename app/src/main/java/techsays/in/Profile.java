@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -56,14 +59,15 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
     private static final String TAG = "SearchActivity";
     private Context mContext = Profile.this;
 SharedPreferences sh;
+RelativeLayout relativeLayout;
     SharedPreferences phonepref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drwer);
         setupBottomNavigationView();
-       phonepref=getSharedPreferences("myphone",MODE_PRIVATE);
-
+       phonepref=getSharedPreferences("data",MODE_PRIVATE);
+relativeLayout=findViewById(R.id.proview);
         sh = getSharedPreferences("log", MODE_PRIVATE);
 
 
@@ -304,12 +308,12 @@ SharedPreferences sh;
 
 public void callback()
 {
-    StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://dress-metal.000webhostapp.com/sms.php",
+    StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://techsays.in/sms.php",
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
-
+                   Snackbar.make(relativeLayout,response,BaseTransientBottomBar.LENGTH_LONG).show();
 /* if (response.equals("success")) {
 
 Toast.makeText(MainActivity.this, "success upload", Toast.LENGTH_SHORT).show();
@@ -335,7 +339,7 @@ Toast.makeText(MainActivity.this, "success failed", Toast.LENGTH_SHORT).show();
         protected Map<String, String> getParams() throws AuthFailureError {
             Map<String, String> params = new HashMap<>();
 //Adding parameters to request
-            params.put("num", phonepref.getString("ph",null));
+            params.put("phone", phonepref.getString("phone",null));
             params.put("name",user.getDisplayName());
 //returning parameter
             return params;
