@@ -14,6 +14,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -45,6 +46,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -64,6 +66,7 @@ RelativeLayout relativeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale();
         setContentView(R.layout.navigation_drwer);
         setupBottomNavigationView();
        phonepref=getSharedPreferences("data",MODE_PRIVATE);
@@ -348,6 +351,24 @@ Toast.makeText(MainActivity.this, "success failed", Toast.LENGTH_SHORT).show();
     RequestQueue requestQueue = Volley.newRequestQueue(Profile.this);
     requestQueue.add(stringRequest);
 }
+    public void setLocale(String hi) {
+        Locale locale=new Locale(hi);
+        Locale.setDefault(locale);
+        Configuration configuration=new Configuration();
+        configuration.locale=locale;
+        getResources().updateConfiguration(configuration,getResources().getDisplayMetrics());
+        SharedPreferences sh=getSharedPreferences("Settings",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sh.edit();
+        editor.putString("my",hi);
+        editor.apply();
+    }
+    public void loadLocale()
+    {
+        SharedPreferences sharedPreferences=getSharedPreferences("Settings",MODE_PRIVATE);
+        String language=sharedPreferences.getString("my","");
+        setLocale(language);
+
+    }
 }
 
 

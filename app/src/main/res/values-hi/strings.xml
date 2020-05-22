@@ -20,6 +20,10 @@
     <string name="Callback">वापस कॉल करें</string>
     <string name="Aboutus">हमारे बारे में</string>
     <string name="S">समायोजन</string>
+    <string name="UserInfo">उपयोगकर्ता जानकारी</string>
+    <string name="Profile" >प्रोफ़ाइल</string>
+    <string name="Video">ट्यूटोरियल</string>
+    <string name="des">सिस्टम सुचारू रूप से और जिम्मेदारी से चलना सुनिश्चित करने के लिए टेकसैस हर छोटे विस्तार को ध्यान में रखता है। टेक्सेस  उच्च गुणवत्ता वाले समाधान प्राप्त करने के लिए मिनीफाइड तकनीकों को काम में लाती है।</string>
     <string name="Logout">लॉग आउट</string>
     <string name="techsays">टेक्सेस वारा संचालित सॉफ्टवेयर सॉल्यूशंस</string>
 </resources>

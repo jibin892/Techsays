@@ -167,7 +167,7 @@
                     android:fontFamily="@font/proximanovaregular"
                     android:gravity="center"
                     android:padding="13dp"
-                    android:text="User Info"
+                    android:text="@string/UserInfo"
                     android:textAllCaps="true"
                     android:textColor="@color/blue"
                     android:textSize="14sp"

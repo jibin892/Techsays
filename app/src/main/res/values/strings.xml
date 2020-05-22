@@ -11,7 +11,8 @@
     <string name="changelanguage">Change Language</string>
     <string name="DarkMode">Dark Mode</string>
     <string name="DeleteAccount">Delete Account</string>
-    <string name="Profile" translatable="false">Profile</string>
+    <string name="Profile" >Profile</string>
+    <string name="Video">Tutorials</string>
     <string name="course">Course</string>
     <string name="service">Service</string>
     <string name="Home">Home</string>
@@ -21,6 +22,8 @@
     <string name="Aboutus">AboutUs</string>
     <string name="S">Settings</string>
     <string name="Logout">Logout</string>
+    <string name="UserInfo">User Info</string>
+    <string name="des">Techsays takes into consideration every little detail to make sure the system run smoothly and responsively. Techsays employs minifed technologies to achieve high quality solutions..</string>
     <string name="techsays">Techsays Software Solutions Pvt Ltd.</string>
 
     <string name="wallet">Wallet</string>
