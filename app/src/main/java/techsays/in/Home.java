@@ -1,9 +1,11 @@
 package techsays.in;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -45,7 +47,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Home extends AppCompatActivity implements View.OnClickListener ,NavigationView.OnNavigationItemSelectedListener {
 
-
+final int RequestPermissionCode=1;
 
     TextView usernamedisplay;
     ImageView profileimghome,nav;
@@ -65,6 +67,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
 loadLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drwer_home);
+        EnableRuntimePermission();
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         she=getSharedPreferences("log",MODE_PRIVATE);
@@ -526,6 +529,41 @@ loadLocale();
         String language=sharedPreferences.getString("my","");
         setLocale(language);
 
+    }
+    public void EnableRuntimePermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(Home.this,
+                Manifest.permission.CALL_PHONE)) {
+
+// Toast.makeText(Cpature_image.this,"CAMERA permission allows us to Access CAMERA app", Toast.LENGTH_LONG).show();
+
+        } else {
+
+            ActivityCompat.requestPermissions(Home.this, new String[]{
+                    Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE}, RequestPermissionCode);
+
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int RC, String per[], int[] PResult) {
+
+        switch (RC) {
+
+            case RequestPermissionCode:
+
+                if (PResult.length > 0 && PResult[0] == PackageManager.PERMISSION_GRANTED) {
+
+// Toast.makeText(Cpature_image.this,"Permission Granted, Now your application can access CAMERA.", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    Toast.makeText(this, "Permission Cancelled,Please Grant Permission", Toast.LENGTH_LONG).show();
+
+                }
+                break;
+        }
     }
 
 }
