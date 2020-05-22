@@ -1,6 +1,7 @@
 package techsays.in;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
@@ -29,17 +30,28 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -48,7 +60,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class Home extends AppCompatActivity implements View.OnClickListener ,NavigationView.OnNavigationItemSelectedListener {
 
 final int RequestPermissionCode=1;
-
+    SharedPreferences phonepref;
     TextView usernamedisplay;
     ImageView profileimghome,nav;
     SharedPreferences sh1, sh;
@@ -56,10 +68,11 @@ final int RequestPermissionCode=1;
     private BottomSheetDialog bottomSheetDialog;
     FloatingActionButton contact;
     boolean doubleBackToExitPressedOnce = false;
-
+ConstraintLayout constraintLayout;
     SharedPreferences she;
     private static final String TAG = "HomeActivity";
     private static final int ACTIVITY_NO = 0;
+    FirebaseUser user;
     private Context mContext = Home.this;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -69,14 +82,14 @@ loadLocale();
         setContentView(R.layout.navigation_drwer_home);
         EnableRuntimePermission();
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+constraintLayout=findViewById(R.id.ert);
         she=getSharedPreferences("log",MODE_PRIVATE);
         SharedPreferences.Editor e=she.edit();
         e.putBoolean("id",true);
 
         e.apply();
 
-
+            phonepref=getSharedPreferences("data",MODE_PRIVATE);
             sh1 = getSharedPreferences("LOGINDATA", MODE_PRIVATE);
             sh = getSharedPreferences("log", MODE_PRIVATE);
 
@@ -320,7 +333,7 @@ loadLocale();
         progress.setMessage("Wait while loading...");
         progress.setCancelable(false); // disable dismiss by tapping outside of the dialog
         progress.show();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       user = FirebaseAuth.getInstance().getCurrentUser();
         if (user.getUid() != null) {
 
             final SharedPreferences sh1 = getSharedPreferences("userdatastemp", MODE_PRIVATE);
@@ -429,14 +442,15 @@ loadLocale();
             new SweetAlertDialog(Home.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Are you sure?")
                     .setContentText("Call Back Now")
-                    .setConfirmText("Delete!")
+                    .setConfirmText("Yes!")
                     .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
+                            callback();
                             sDialog.dismissWithAnimation();
                         }
                     })
-                    .setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
+                    .setCancelButton("Not Now", new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sDialog) {
                             sDialog.dismissWithAnimation();
@@ -540,7 +554,7 @@ loadLocale();
         } else {
 
             ActivityCompat.requestPermissions(Home.this, new String[]{
-                    Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE}, RequestPermissionCode);
+                    Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_NETWORK_STATE}, RequestPermissionCode);
 
 
         }
@@ -565,6 +579,49 @@ loadLocale();
                 break;
         }
     }
+    public void callback()
+    {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://techsays.in/sms.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Snackbar.make(constraintLayout,response, BaseTransientBottomBar.LENGTH_LONG).show();
+/* if (response.equals("success")) {
+
+Toast.makeText(MainActivity.this, "success upload", Toast.LENGTH_SHORT).show();
+//Creating a shared preference
+
+} else {
+Toast.makeText(MainActivity.this, "success failed", Toast.LENGTH_SHORT).show();
+//If the server response is not success
+//Displaying an error message on toast
+// Toast.makeText(VerificationActivity.this,"success upload fail",Toast.LENGTH_SHORT).show();
+}*/
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+//You can handle error here if you want
+                    }
+
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+//Adding parameters to request
+                params.put("phone", phonepref.getString("phone",null));
+                params.put("name",user.getDisplayName());
+//returning parameter
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(Home.this);
+        requestQueue.add(stringRequest);
+    }
+
 
 }
 
