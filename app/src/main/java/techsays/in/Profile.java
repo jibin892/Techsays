@@ -178,7 +178,15 @@ relativeLayout=findViewById(R.id.proview);
 
             startActivity(log12);        }
 
+        else if (id == R.id.nav_msg) {
 
+
+            final Intent log12 = new Intent(Profile.this, Message.class);
+
+            startActivity(log12);
+
+
+        }
         else if (id == R.id.nav_contact) {
 
 

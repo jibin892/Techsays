@@ -48,7 +48,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
 
 
     TextView usernamedisplay;
-    ImageView profileimghome,nav,msg;
+    ImageView profileimghome,nav;
     SharedPreferences sh1, sh;
     ImageView profileimglogout;
     private BottomSheetDialog bottomSheetDialog;
@@ -83,7 +83,6 @@ loadLocale();
             profileimghome = findViewById(R.id.profileimghome);
             usernamedisplay = findViewById(R.id.usernamedisplay);
 
-            contact = findViewById(R.id.location);
 
 
             final DrawerLayout drawer = findViewById(R.id.drawer_layout1);
@@ -111,7 +110,6 @@ loadLocale();
 
 
             nav = findViewById(R.id.nav);
-            msg = findViewById(R.id.msg);
             Button logout = bottomSheetDialogView.findViewById(R.id.logout);
             profileimglogout = bottomSheetDialogView.findViewById(R.id.profileimglogout);
             TextView logoutemail = bottomSheetDialogView.findViewById(R.id.logoutemail);
@@ -147,17 +145,6 @@ loadLocale();
             Picasso.get().load(String.valueOf(user.getPhotoUrl())).into(profileimghome);
 
 
-
-            msg.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent messg=new Intent(getApplicationContext(), Message.class);
-                    startActivity(messg);
-
-
-                }
-            });
 
 
 
@@ -403,6 +390,19 @@ loadLocale();
 
 
         }
+
+        else if (id == R.id.nav_msg) {
+
+
+            final Intent log12 = new Intent(Home.this, Message.class);
+
+            startActivity(log12);
+
+
+        }
+
+
+
         else if (id == R.id.nav_about) {
 
             final Intent log13 = new Intent(Home.this, About_us.class);

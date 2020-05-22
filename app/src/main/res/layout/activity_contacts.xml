@@ -28,11 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="353dp"
-            android:layout_height="70dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:padding="15dp">
+
 
             <ImageView
                 android:layout_width="24dp"
@@ -46,11 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/padding_10"
-                android:scaleType="centerCrop"
                 android:src="@drawable/techsays"
                 tools:ignore="MissingConstraints" />
-        </LinearLayout>
     </LinearLayout>
 
 
@@ -126,6 +119,7 @@
                         tools:ignore="VectorDrawableCompat" />
 
                     <TextView
+                        android:id="@+id/contactph"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -158,6 +152,7 @@
                         tools:ignore="VectorDrawableCompat" />
 
                     <TextView
+                        android:id="@+id/contactemail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -191,28 +186,17 @@
                         tools:ignore="VectorDrawableCompat" />
 
                     <TextView
+                        android:id="@+id/contactaddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="30dp"
                         android:background="@android:color/transparent"
                         android:text="2nd Floor,Karukappadath Building Near Changampuzha Park Metro Station, Edappally, Kochi, Kerala 682024."
                         android:drawableTint="@color/colorPrimaryDark"
                         android:padding="15dp"
                         android:textColor="@color/black"  />
 
-
-                    <ImageView
-                        android:id="@+id/imageVhikew5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_marginTop="12dp"
-                        android:drawableTint="@color/colorPrimaryDark"
-                        android:tint="@color/colorPrimaryDark"
-                        app:srcCompat="@drawable/ic_home_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
 
 
 
