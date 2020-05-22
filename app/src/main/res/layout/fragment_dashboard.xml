@@ -4,21 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".Contacts">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/gradient"
+        tools:ignore="MissingConstraints" />
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="xvscvsdcvvb"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textColor="@color/bg_screen1"
-        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="353dp"
+            android:layout_height="70dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="15dp"/>
+    </LinearLayout>
+
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:optRoundCardCornerRadius="0dp"
+        app:optRoundCardElevation="0dp"
+        app:optRoundCardLeftBottomCorner="false"
+        app:optRoundCardLeftTopCorner="true"
+        app:optRoundCardRightBottomCorner="false"
+        app:optRoundCardRightTopCorner="true"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="80dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seco"
+                    android:textStyle="bold"
+                    android:textSize="25dp"
+                    android:textColor="#191919"
+                    android:layout_marginStart="30dp"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

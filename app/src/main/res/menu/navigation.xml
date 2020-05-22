@@ -31,6 +31,11 @@
 
 
         <item
+            android:id="@+id/nav_msg"
+            android:icon="@drawable/msg"
+            android:title="Chat Support" />
+
+        <item
             android:id="@+id/nav_callbackk"
             android:icon="@drawable/ic_callback_black_24dp"
             android:title="Call Back" />
