@@ -5,7 +5,21 @@
     <string name="start">ആരംഭിക്കുക</string>
     <string name="next">അടുത്തത്</string>
     <string name="title_activity_hompage">ഹോംപേജ്</string>
-    <string name="title_home">വീട്</string>
+    <string name="title_home">ഹോം</string>
+    <string name="changelanguage">ഭാഷ മാറ്റുക</string>
     <string name="title_dashboard">ഡാഷ്ബോർഡ്</string>
+    <string name="DarkMode">ഡാർക്ക് മോഡ് </string>
+    <string name="DeleteAccount">അക്കൗണ്ട് ഇല്ലാതാക്കുക</string>
     <string name="title_notifications">അറിയിപ്പുകൾ</string>
+    <string name="course">കോഴ്സുകൾ</string>
+    <string name="service">സേവനങ്ങള്</string>
+    <string name="wallet">വാലറ്റ്</string>
+    <string name="Home">ഹോം</string>
+    <string name="Contact">കോൺ‌ടാക്റ്റ്</string>
+    <string name="Share">പങ്കിടുക</string>
+    <string name="Callback">തിരിച്ചു വിളിക്കുക</string>
+    <string name="Aboutus">ഞങ്ങളേക്കുറിച്ച്</string>
+    <string name="S">ക്രമീകരണങ്ങൾ</string>
+    <string name="Logout">ലോഗൗട്ട് </string>
+    <string name="techsays">ടെക്‌സെയ്സ് സോഫ്റ്റ്‌വെയർ  സൊല്യൂഷൻസ് പ്രൈവറ്റ് ലിമിറ്റഡ്</string>
 </resources>

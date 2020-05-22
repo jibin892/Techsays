@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 
-public class CodeFragment extends Fragment {
+public class WalletFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,

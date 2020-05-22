@@ -43,10 +43,7 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-SharedPreferences phonepref=getSharedPreferences("myphone",MODE_PRIVATE);
-SharedPreferences.Editor editor=phonepref.edit();
-editor.putString("ph",phone.getText().toString());
-editor.apply();
+
 
                 {
 
@@ -89,7 +86,7 @@ editor.apply();
                             ee.putString("pid",user.getProviderId());
                             ee.putString("image",String.valueOf(user.getPhotoUrl()));
                             ee.putString("pid",user.getProviderId());
-
+                            ee.putString("phone",phone.getText().toString());
                             ee.apply();
 
                             startActivity(log);
