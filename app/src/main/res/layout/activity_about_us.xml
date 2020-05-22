@@ -103,7 +103,7 @@
                         android:layout_marginBottom="5dp"
                         android:layout_marginEnd="30dp"
                         android:background="@android:color/transparent"
-                        android:text="Techsays takes into consideration every little detail to make sure the system run smoothly and responsively. Techsays employs minifed technologies to achieve high quality solutions.."
+                        android:text="@string/des"
                         android:drawableTint="@color/colorPrimaryDark"
                         android:padding="15dp"
                         android:textColor="@color/black"
