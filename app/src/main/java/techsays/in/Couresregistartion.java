@@ -38,7 +38,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class Couresregistartion extends AppCompatActivity {
 EditText coursedetails,age,phone,address,satse,dis;
-Intent a;
+Intent text;
 Button regbtn;
 ImageView back;
 TextView regname;
@@ -48,7 +48,8 @@ TextView regname;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_couresregistartion);
 
-a=getIntent();
+text=getIntent();
+        Toast.makeText(getApplicationContext(),text.getStringExtra("ab"),Toast.LENGTH_LONG).show();
 
         coursedetails=findViewById(R.id.regqul);
         age=findViewById(R.id.regage);
@@ -59,7 +60,7 @@ a=getIntent();
         regbtn=findViewById(R.id.regbtn);
         regname=findViewById(R.id.regname);
         back=findViewById(R.id.coureback);
-
+        regname.setText(text.getStringExtra("ab"));
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -83,7 +84,6 @@ a=getIntent();
 
 
 
-regname.setText("REGISTARION");
         regbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,6 +166,7 @@ regname.setText("REGISTARION");
                                 map.put("personEmail",user.getEmail());
                                 map.put("personPhoto",String.valueOf(user.getPhotoUrl()));
                                 map.put("id", user.getUid());
+                                map.put("reg_course",text.getStringExtra("ab"));
                                 map.put("course_info", coursedetails.getText().toString());
                                 map.put("age", age.getText().toString());
                                 map.put("address", address.getText().toString());

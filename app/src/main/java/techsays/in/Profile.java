@@ -82,6 +82,7 @@ relativeLayout=findViewById(R.id.proview);
             }
         });
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
         TextView navemail = headerView.findViewById(R.id.navemail);
