@@ -43,9 +43,9 @@ public class AndroidCourese extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                final Intent web = new Intent(getApplicationContext(), Syllabus_webview.class);
-web.putExtra("syllabus","https://www.techsays.in/syllabus_android.html");
-                startActivity(web);
+                final Intent web1 = new Intent(getApplicationContext(), Syllabus_webview.class);
+               web1.putExtra("syllabus","https://www.techsays.in/syllabus_android.html");
+                startActivity(web1);
 
 
             }

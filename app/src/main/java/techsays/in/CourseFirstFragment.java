@@ -79,7 +79,7 @@ androidbtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
 
-                Intent log = new Intent(getActivity(), AndroidCourese.class);
+                Intent log = new Intent(getActivity(), Digital_MarketingCourese.class);
                 log.putExtra("aa",a);
                 startActivity(log);
 

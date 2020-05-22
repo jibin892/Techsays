@@ -8,27 +8,26 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Digital_MarketingCourese extends AppCompatActivity {
-   LinearLayout digitalmarketingbtn,digitalmarketingweb;
+   LinearLayout dibtn,diweb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.digitalmarketing_courese);
 
-        digitalmarketingbtn=findViewById(R.id.digitaldarketingwebsite);
-        digitalmarketingweb=findViewById(R.id.digitalmarketingregisterbtn);
+        diweb=findViewById(R.id.diweb);
+        dibtn=findViewById(R.id.dibtn);
 
 
 
 
-        digitalmarketingbtn.setOnClickListener(new View.OnClickListener() {
+        diweb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                final Intent log12 = new Intent(getApplicationContext(), Couresregistartion.class);
-
-                startActivity(log12);
-
+                Intent web = new Intent(Digital_MarketingCourese.this, Syllabus_webview.class);
+                web.putExtra("syllabus","https://www.techsays.in/syllabus_digitalmarkting.html");
+                startActivity(web);
 
             }
 
@@ -38,14 +37,15 @@ public class Digital_MarketingCourese extends AppCompatActivity {
 
 
 
-        digitalmarketingweb.setOnClickListener(new View.OnClickListener() {
+        dibtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                final Intent web = new Intent(getApplicationContext(), Syllabus_webview.class);
-web.putExtra("syllabus","https://www.techsays.in/syllabus_digitalmarkting.html");
-                startActivity(web);
+
+                final Intent log12 = new Intent(getApplicationContext(), Couresregistartion.class);
+
+                startActivity(log12);
 
 
             }

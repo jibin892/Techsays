@@ -71,6 +71,8 @@ link=getIntent();
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+            getIntent().removeExtra("syllabus");
+
         }
     }
     @Override
