@@ -38,7 +38,7 @@ public class Youtube extends AppCompatActivity {
     CustomListAdapter customListAdapter;
     String searchName;
     String TAG="ChannelActivity";
-    String URL="https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCHFRKabY2dAIdMOwNOL2mGQ&maxResults=25&key=AIzaSyB8wNls98RqORuCKLR3lT2Rx6ko8TXUjig";
+    String URL="https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCeoRAN5sr02w8_9aFWxIM4g&maxResults=25&key=AIzaSyB8wNls98RqORuCKLR3lT2Rx6ko8TXUjig";
     private static final int ACTIVITY_NUM = 3;
 
  //   private static final String TAG = "SearchActivity";
