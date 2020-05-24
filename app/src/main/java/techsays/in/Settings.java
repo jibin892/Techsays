@@ -76,7 +76,7 @@ public class Settings extends AppCompatActivity {
                     setLocale("ta");
                     recreate();
                 }
-                
+
                 dialog.dismiss();
             }
         });
