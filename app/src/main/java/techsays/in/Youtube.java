@@ -4,20 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
@@ -31,23 +33,31 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Youtube extends AppCompatActivity {
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
+public class Youtube extends AppCompatActivity {
+ProgressBar p;
+    SweetAlertDialog pDialog;
     ListView lvVideo;
     ArrayList<VideoDetails> videoDetailsArrayList;
     CustomListAdapter customListAdapter;
     String searchName;
     String TAG="ChannelActivity";
-    String URL="https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCeoRAN5sr02w8_9aFWxIM4g&maxResults=25&key=AIzaSyB8wNls98RqORuCKLR3lT2Rx6ko8TXUjig";
+    String URL="https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCP0uG-mcMImgKnJz-VjJZmQ&maxResults=50&key=AIzaSyAQ9n3zHMO9u8FxiX8Swwy2pFw-rm9Xz6I";
     private static final int ACTIVITY_NUM = 3;
 
  //   private static final String TAG = "SearchActivity";
     private Context mContext = Youtube.this;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.youtube);
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("Loading Tutorils...");
+        pDialog.setCancelable(false);
+        pDialog.show();
+
         lvVideo=(ListView)findViewById(R.id.videoList);
         videoDetailsArrayList=new ArrayList<>();
         customListAdapter=new CustomListAdapter(Youtube.this,videoDetailsArrayList);
@@ -76,6 +86,7 @@ public class Youtube extends AppCompatActivity {
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+pDialog.cancel();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONArray jsonArray=jsonObject.getJSONArray("items");

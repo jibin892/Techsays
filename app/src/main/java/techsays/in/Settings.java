@@ -1,5 +1,6 @@
 package techsays.in;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
@@ -7,18 +8,37 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Locale;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class Settings extends AppCompatActivity {
-    TextView cl;
+    TextView cl,delete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale();
         setContentView(R.layout.activity_settings);
         cl = findViewById(R.id.cl);
+        delete=findViewById(R.id.deleteaccount);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
         cl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,6 +46,7 @@ public class Settings extends AppCompatActivity {
             }
         });
     }
+
     private void showlanguages() {
         final  String[] languages ={"English","हिन्दी","മലയാളം","தமிழ்","ಕನ್ನಡ","తెలుగు"};
         AlertDialog.Builder mbuilder=new AlertDialog.Builder(Settings.this);
@@ -50,6 +71,12 @@ public class Settings extends AppCompatActivity {
                     setLocale("ml");
                     recreate();
                 }
+                else  if(which==3)
+                {
+                    setLocale("ta");
+                    recreate();
+                }
+                
                 dialog.dismiss();
             }
         });
@@ -74,4 +101,5 @@ public class Settings extends AppCompatActivity {
        setLocale(language);
 
     }
+
 }

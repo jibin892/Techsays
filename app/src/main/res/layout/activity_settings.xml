@@ -121,8 +121,8 @@
                     android:textStyle="bold" />
 
 
-
                 <TextView
+                    android:id="@+id/deleteaccount"
                     android:layout_width="185dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
@@ -131,8 +131,8 @@
                     android:background="@android:color/transparent"
                     android:drawableEnd="@drawable/ic_right_black_24dp"
                     android:drawableTint="#696969"
-                    android:text="@string/DeleteAccount"
                     android:padding="15dp"
+                    android:text="@string/DeleteAccount"
                     android:textColor="#191919"
                     android:textColorHint="#696969"
                     android:textStyle="bold" />

@@ -9,13 +9,16 @@ import androidx.viewpager.widget.ViewPager;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -58,7 +61,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class Home extends AppCompatActivity implements View.OnClickListener ,NavigationView.OnNavigationItemSelectedListener {
-
+    private BroadcastReceiver MyReceiver = null;
 final int RequestPermissionCode=1;
     SharedPreferences phonepref;
     TextView usernamedisplay;
@@ -80,27 +83,24 @@ ConstraintLayout constraintLayout;
 loadLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drwer_home);
-        EnableRuntimePermission();
+            EnableRuntimePermission();
+            MyReceiver = new MyReceiver();
+            broadcastIntent();
+
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 constraintLayout=findViewById(R.id.ert);
         she=getSharedPreferences("log",MODE_PRIVATE);
         SharedPreferences.Editor e=she.edit();
         e.putBoolean("id",true);
-
         e.apply();
-
             phonepref=getSharedPreferences("data",MODE_PRIVATE);
             sh1 = getSharedPreferences("LOGINDATA", MODE_PRIVATE);
             sh = getSharedPreferences("log", MODE_PRIVATE);
-
             bottomSheetDialog = new BottomSheetDialog(Home.this);
             View bottomSheetDialogView = getLayoutInflater().inflate(R.layout.logout_and_info, null);
             bottomSheetDialog.setContentView(bottomSheetDialogView);
             profileimghome = findViewById(R.id.profileimghome);
             usernamedisplay = findViewById(R.id.usernamedisplay);
-
-
-
             final DrawerLayout drawer = findViewById(R.id.drawer_layout1);
             ImageView menuIcon = (ImageView) findViewById(R.id.navhombtn);
             menuIcon.setOnClickListener(new View.OnClickListener(){
@@ -458,18 +458,17 @@ constraintLayout=findViewById(R.id.ert);
                     })
                     .show();
         }
-        else if (id == R.id.nav_share) {
 
+        else if (id == R.id.nav_share) {
             Bitmap imgBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.reward);
             String imgBitmapPath = MediaStore.Images.Media.insertImage(getContentResolver(),imgBitmap,"Techsays",null);
             Uri imgBitmapUri = Uri.parse(imgBitmapPath);
-
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             shareIntent.putExtra(Intent.EXTRA_STREAM,imgBitmapUri);
             shareIntent.setType("*/*");
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Download Techsays's Official App From Play Store:https://play.google.com/store/apps/details?id="+getPackageName()+"\n"+" And get Recharged Your Phone with Our Watch and earn Task.For ,More detials contact us +91 9847423836, +91 8848968113");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Download Techsays's Official App From Play Store:https://play.google.com/store/apps/details?id="+getPackageName()+"\n"+" And get Recharged Your Phone with Our Watch and earn Task.For ,More details contact us +91 9847423836, +91 8848968113");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Techsays");
             startActivity(Intent.createChooser(shareIntent, "Share this"));
 
@@ -514,18 +513,11 @@ constraintLayout=findViewById(R.id.ert);
 
 
             }
-
-
-
-
         }
-
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout1);
         drawer.closeDrawer(Gravity.LEFT);
         return true;
     }
-
     public void setLocale(String hi) {
         Locale locale=new Locale(hi);
         Locale.setDefault(locale);
@@ -554,7 +546,7 @@ constraintLayout=findViewById(R.id.ert);
         } else {
 
             ActivityCompat.requestPermissions(Home.this, new String[]{
-                    Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_NETWORK_STATE}, RequestPermissionCode);
+                    Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.ACCESS_WIFI_STATE,Manifest.permission.CHANGE_NETWORK_STATE,Manifest.permission.CHANGE_WIFI_STATE}, RequestPermissionCode);
 
 
         }
@@ -621,6 +613,10 @@ Toast.makeText(MainActivity.this, "success failed", Toast.LENGTH_SHORT).show();
         RequestQueue requestQueue = Volley.newRequestQueue(Home.this);
         requestQueue.add(stringRequest);
     }
+    public void broadcastIntent() {
+        registerReceiver(MyReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
 
 
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ಟೆಚ್ಸಯ್ಸ್ </string>
+    <string name="skip">SKIP</string>
+    <string name="start">START</string>
+    <string name="next">NEXT</string>
+    <string name="title_activity_hompage">ಮನೆ</string>
+    <string name="title_home">ಮನೆ</string>
+    <string name="title_dashboard"> ಡ್ಯಾಶ್‌ಬೋರ್ಡ್</string>
+    <string name="title_notifications">ಅಧಿಸೂಚನೆಗಳು</string>
+    <string name="changelanguage">ಭಾಷೆ ಬದಲಾಯಿಸಿ</string>
+    <string name="DarkMode">ಡಾರ್ಕ್ ಮೋಡ್</string>
+    <string name="DeleteAccount">ಖಾತೆಯನ್ನು ಅಳಿಸಿ</string>
+    <string name="Profile">சಪ್ರೊಫೈಲ್</string>
+    <string name="Video">ಟ್ಯುಟೋರಿಯಲ್</string>
+    <string name="course">ಕೋರ್ಸ್</string>
+    <string name="service">ಸೇವೆ</string>
+    <string name="Home">ಮನೆ</string>
+    <string name="Contact">ಸಂಪರ್ಕ</string>
+    <string name="Share">ಪಾಲು </string>
+    <string name="Callback">ಮತ್ತೆ ಕರೆ ಮಾಡಿ</string>
+    <string name="Aboutus">ನಮ್ಮ ಬಗ್ಗೆ </string>
+    <string name="S">ಸಂಯೋಜನೆಗಳು</string>
+    <string name="Logout">ಲಾಗ್ ಔಟ್</string>
+    <string name="chat">ಆನ್‌ಲೈನ್ ಬೆಂಬಲ</string>
+    <string name="UserInfo">ಬಳಕೆದಾರ ಮಾಹಿತಿ</string>
+    <string name="des">Techsays takes into consideration every little detail to make sure the system run smoothly and responsively. Techsays employs minifed technologies to achieve high quality solutions..</string>
+    <string name="techsays">Techsays Software Solutions Pvt Ltd.</string>
+
+    <string name="wallet">ಕೈಚೀಲ</string>
+</resources>
