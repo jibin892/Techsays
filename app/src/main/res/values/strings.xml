@@ -21,11 +21,15 @@
     <string name="Callback">Call Back</string>
     <string name="Aboutus">AboutUs</string>
     <string name="S">Settings</string>
+    <string name="payment">Payment</string>
+
+
     <string name="Logout">Logout</string>
     <string name="chat">Online support</string>
     <string name="UserInfo">User Info</string>
     <string name="des">Techsays takes into consideration every little detail to make sure the system run smoothly and responsively. Techsays employs minifed technologies to achieve high quality solutions..</string>
     <string name="techsays">Techsays Software Solutions Pvt Ltd.</string>
+    <string name="android"> Android App Development</string>
 
     <string name="wallet">Wallet</string>
     <array name="icons">

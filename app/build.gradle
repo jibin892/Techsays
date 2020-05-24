@@ -67,6 +67,10 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.2.2'
 
 
+
+
+
+
     implementation 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.6'
     implementation 'com.ramotion.circlemenu:circle-menu:0.3.1'
 

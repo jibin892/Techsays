@@ -24,6 +24,10 @@
     <string name="Logout">வெளியேறு</string>
     <string name="chat">ஆன்லைன் ஆதரவு</string>
     <string name="UserInfo">பயனர் தகவல்</string>
+    <string name="payment">கட்டணம்</string>
+    <string name="android">
+Android பயன்பாட்டு மேம்பாடு
+</string>
     <string name="des">Techsays takes into consideration every little detail to make sure the system run smoothly and responsively. Techsays employs minifed technologies to achieve high quality solutions..</string>
     <string name="techsays">Techsays Software Solutions Pvt Ltd.</string>
 

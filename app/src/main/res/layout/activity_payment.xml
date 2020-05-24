@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Contacts">
+    tools:context=".Couresregistartion">
 
     <ImageView
         android:id="@+id/imageView"
@@ -31,6 +31,7 @@
 
 
         <ImageView
+            android:id="@+id/payback"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center"
@@ -46,6 +47,7 @@
             tools:ignore="MissingConstraints" />
     </LinearLayout>
 
+
     <com.github.captain_miao.optroundcardview.OptRoundCardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -60,123 +62,82 @@
         app:optRoundCardRightTopCorner="true"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <androidx.core.widget.NestedScrollView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_marginTop="80dp">
                 <TextView
+                    android:id="@+id/regname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Aboutus"
+                    android:text="@string/payment"
                     android:textStyle="bold"
                     android:textSize="25dp"
                     android:textColor="#191919"
                     android:layout_marginStart="30dp"/>
 
 
-
-                <RelativeLayout
-                    android:id="@+id/relLayout2"
+                <EditText
+                    android:id="@+id/paymentammount"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/relLayout1"
-                    android:layout_marginTop="-45dp"
-                    android:layout_marginBottom="60dp">
-
-                    <ListView
-                        android:id="@+id/list_of_messages"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:divider="@android:color/transparent"
-                        android:transcriptMode="alwaysScroll"
-                        android:stackFromBottom="true">
-
-                    </ListView>
-
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:hint="  Amount"
+                    android:inputType="number"
+                    android:drawableStart="@drawable/ic_payment_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:backgroundTint="@color/grey"
+                    android:textColor="#191919"
+                    android:textColorHint="#696969" />
 
 
 
 
-                    <ImageView
-                        android:id="@+id/imgmsg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/whiteroundcorner" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/relLayout3"
+                <EditText
+                    android:id="@+id/paymentdiscriptin"
                     android:layout_width="match_parent"
-                    android:layout_height="59dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:background="@drawable/whiteroundcorner">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:hint="  Discriptin"
+                    android:inputType="textMultiLine"
+                    android:drawableStart="@drawable/ic_attachment_black_24dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:padding="15dp"
+                    android:backgroundTint="@color/grey"
+                    android:textColor="#191919"
+                    android:textColorHint="#696969" />
 
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fab"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginRight="13dp"
-                        android:layout_marginBottom="9dp"
-                        android:clickable="true"
-                        android:src="@drawable/send"
-                        android:tint="@android:color/white"
-                        app:fabSize="mini" />
-
-                    <EditText
-                        android:id="@+id/input"
-                        android:layout_width="339dp"
-                        android:backgroundTint="@color/white"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="50dp"
-                        android:hint="enter your message..."
-                        android:padding="2dp"
-                        android:textSize="14sp" />
-
-                </RelativeLayout>
-
-
-
-
+                <Button
+                    android:id="@+id/pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="80dp"
+                    android:background="@drawable/homebutton"
+                    android:text="PAY"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
+        </ScrollView>
 
     </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

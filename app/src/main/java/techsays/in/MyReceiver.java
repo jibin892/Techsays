@@ -21,10 +21,14 @@ public class MyReceiver extends BroadcastReceiver {
         }
         else  if(status.equals("Mobile data enabled"))
         {
+           // Toast.makeText(context, "Mobile data enabled", Toast.LENGTH_LONG).show();
 
         }
         else
         {
+
+
+
             Toast.makeText(context, status, Toast.LENGTH_LONG).show();
         }
 

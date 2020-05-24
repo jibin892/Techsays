@@ -89,7 +89,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/circularbordersolid"
                     android:layout_marginEnd="30dp"
                     android:hint="  Basic Qualifications"
                     android:backgroundTint="@color/grey"
@@ -98,7 +97,7 @@
                     android:padding="15dp"
                     android:textColor="#191919"
                     android:textColorHint="#696969"
-                    android:textStyle="bold" />
+         />
 
 
                 <EditText
@@ -110,7 +109,6 @@
                     android:layout_marginEnd="30dp"
                     android:inputType="phone"
                     android:maxLength="10"
-                    android:background="@drawable/circularbordersolid"
                     android:hint="  Alternative number"
                     android:drawableStart="@drawable/ic_local_phone_black_24dp"
                     android:drawableTint="@color/colorPrimaryDark"
@@ -118,8 +116,7 @@
                     android:backgroundTint="@color/grey"
 
                     android:textColor="#191919"
-                    android:textColorHint="#696969"
-                    android:textStyle="bold" />
+                    android:textColorHint="#696969" />
 
 
 
@@ -130,7 +127,6 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@drawable/circularbordersolid"
                     android:hint="  Age"
                     android:inputType="number"
                     android:backgroundTint="@color/grey"
@@ -139,7 +135,7 @@
                     android:padding="15dp"
                     android:textColor="#191919"
                     android:textColorHint="#696969"
-                    android:textStyle="bold" />
+                />
 
 
 
@@ -150,7 +146,6 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@drawable/circularbordersolid"
                     android:hint="  Address"
                     android:drawableStart="@drawable/ic_location_24dp"
                     android:drawableTint="@color/colorPrimaryDark"
@@ -160,7 +155,7 @@
                     android:inputType="textMultiLine"
                     android:textColor="#191919"
                     android:textColorHint="#696969"
-                    android:textStyle="bold" />
+                  />
 
 
 
@@ -171,15 +166,13 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@drawable/circularbordersolid"
                     android:hint="  State"
                     android:drawableStart="@drawable/ic_attachment_black_24dp"
                     android:drawableTint="@color/colorPrimaryDark"
                     android:padding="15dp"
                     android:backgroundTint="@color/grey"
                     android:textColor="#191919"
-                    android:textColorHint="#696969"
-                    android:textStyle="bold" />
+                    android:textColorHint="#696969" />
 
 
 
@@ -191,26 +184,24 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@drawable/circularbordersolid"
                     android:hint="  dis"
                     android:drawableStart="@drawable/ic_attachment_black_24dp"
                     android:drawableTint="@color/colorPrimaryDark"
                     android:padding="15dp"
                     android:backgroundTint="@color/grey"
-
                     android:textColor="#191919"
-                    android:textColorHint="#696969"
-                    android:textStyle="bold" />
+                    android:textColorHint="#696969" />
 
 
                 <Button
                     android:id="@+id/regbtn"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="80dp"
                     android:layout_marginEnd="50dp"
-                    android:layout_marginBottom="80dp"
+                    android:layout_marginBottom="100dp"
                     android:background="@drawable/homebutton"
                     android:text="Registarion"
                     android:textAllCaps="false"

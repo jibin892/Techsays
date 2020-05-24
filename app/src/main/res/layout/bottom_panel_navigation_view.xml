@@ -12,12 +12,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             labelVisibilityMode="unlabeled"
-app:itemIconTint="@color/colorPrimaryDark"
             android:layout_gravity="center"
             android:background="@color/white"
             app:menu="@menu/bottom_nav_menu">
 
 
+<!--            app:itemIconTint="@color/colorPrimaryDark"-->
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 

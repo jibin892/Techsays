@@ -100,7 +100,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:fontFamily="@font/proximanovaregular"
-                                android:text="Android App Development"
+                                android:text="@string/android"
                                 android:textColor="#424242"
                                 android:textSize="21sp"
                                 android:textStyle="bold" />
@@ -262,7 +262,7 @@
                             </LinearLayout>
 
                             <TextView
-                                android:id="@+id/androidcouresebtn1"
+                                android:id="@+id/androidcouresebtn"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -716,7 +716,7 @@
                             </LinearLayout>
 
                             <TextView
-                                android:id="@+id/androidcouresebtn"
+                                android:id="@+id/websitedevelopentebtn"
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"

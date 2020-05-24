@@ -29,11 +29,10 @@ public class Splash extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_splash);
-        top_curve = findViewById(R.id.top_curvesplash);
 
 
-        Animation top_curve_anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.top_down);
-        top_curve.startAnimation(top_curve_anim);
+//        Animation top_curve_anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.top_down);
+//        top_curve.startAnimation(top_curve_anim);
         new Handler().postDelayed(new Runnable() {
 
 
@@ -44,7 +43,7 @@ public class Splash extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 1000);
+        }, 500);
 
 
     }

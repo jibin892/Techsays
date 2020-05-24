@@ -10,8 +10,10 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -214,26 +216,40 @@ relativeLayout=findViewById(R.id.proview);
 
 
         }
+
+        else if (id == R.id.nav_payment) {
+
+
+            final Intent pay = new Intent(Profile.this, Payment.class);
+
+            startActivity(pay);
+
+
+        }
+
+
+
         else if (id == R.id.nav_callbackk) {
 
-            new SweetAlertDialog(Profile.this, SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("Are you sure?")
-                    .setContentText("Call Back Now")
-                    .setConfirmText("Yes!")
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    Profile.this);
+            builder.setTitle("Are you sure?");
+            builder.setMessage("Call Back Now");
+            builder.setNegativeButton("NO",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+                            Toast.makeText(getApplicationContext(),"Cancel",Toast.LENGTH_LONG).show();
+                        }
+                    });
+            builder.setPositiveButton("YES",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
                             callback();
-                            sDialog.dismissWithAnimation();
                         }
-                    })
-                    .setCancelButton("Not Now", new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            sDialog.dismissWithAnimation();
-                        }
-                    })
-                    .show();
+                    });
+            builder.show();
         }
         else if (id == R.id.nav_share) {
             Bitmap imgBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.reward);

@@ -18,6 +18,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+import static android.graphics.Color.GREEN;
+
 public class Webwiewtechsays extends AppCompatActivity {
     WebView web;
     ConstraintLayout vie;
@@ -26,7 +28,6 @@ public class Webwiewtechsays extends AppCompatActivity {
     ProgressBar p;
     Snackbar s;
     SweetAlertDialog pDialog;
-    @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +38,9 @@ public class Webwiewtechsays extends AppCompatActivity {
 
         imageView4 = findViewById(R.id.imageView4);
 
-        s = Snackbar.make(vie, "PLZ WAIT ", Snackbar.LENGTH_LONG);
+        s = Snackbar.make(vie, "Please wait... ", Snackbar.LENGTH_LONG);
         View snackBarView = s.getView();
-        snackBarView.setBackgroundColor(R.color.colorPrimary);
+        snackBarView.setBackgroundColor(GREEN);
         s.show();
 
 

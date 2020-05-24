@@ -46,6 +46,15 @@
     android:id="@+id/uio">
 
         <item
+            android:id="@+id/nav_payment"
+            android:icon="@drawable/ic_payment_black_24dp"
+            android:title="@string/payment" />
+
+
+
+
+
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_about_black_24dp"
             android:title="@string/Aboutus" />
@@ -57,7 +66,7 @@
 
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_logout_24dp"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
             android:title="@string/Logout" />
 
     </group>
@@ -72,9 +81,7 @@
         <item
             android:title=""
             app:showAsAction="ifRoom"/>
-        <item
-            android:title=""
-            app:showAsAction="ifRoom"/>
+
 
 <item
     android:title="@string/techsays"

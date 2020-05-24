@@ -49,7 +49,7 @@ TextView regname;
         setContentView(R.layout.activity_couresregistartion);
 
 text=getIntent();
-        Toast.makeText(getApplicationContext(),text.getStringExtra("ab"),Toast.LENGTH_LONG).show();
+     //   Toast.makeText(getApplicationContext(),text.getStringExtra("ab"),Toast.LENGTH_LONG).show();
 
         coursedetails=findViewById(R.id.regqul);
         age=findViewById(R.id.regage);

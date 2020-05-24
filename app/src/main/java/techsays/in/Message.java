@@ -29,6 +29,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -91,8 +93,8 @@ public class Message extends AppCompatActivity {
         setContentView(R.layout.message);
 
 
-        ivCloseShare = (ImageView) findViewById(R.id.ivCloseShare);
-        tobarausernmae = (TextView) findViewById(R.id.tobarausernmae);
+//        ivCloseShare = (ImageView) findViewById(R.id.ivCloseShare);
+//        tobarausernmae = (TextView) findViewById(R.id.tobarausernmae);
 
 
         //fab6 = (FloatingActionButton) root.findViewById(R.id.fab6);
@@ -103,15 +105,16 @@ public class Message extends AppCompatActivity {
         // fab.setEnabled(false);
         imgmsg = (ImageView) findViewById(R.id.imgmsg);
         input = (EditText) findViewById(R.id.input);
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         sh1 = getSharedPreferences("LOGINDATA", MODE_PRIVATE);
 
-        personName = sh1.getString("name", null);
-        String personGivenName = sh1.getString("name", null);
-        String personFamilyName = sh1.getString("name", null);
-        personEmail = sh1.getString("email", null);
-        personId = sh1.getString("id", null);
-        personPhoto = String.valueOf(sh1.getString("image", null));
+        personName = user.getDisplayName();
+        String personGivenName =  user.getDisplayName();
+        String personFamilyName =  user.getDisplayName();
+        personEmail =  user.getEmail();
+        personId =  user.getUid();
+        personPhoto = String.valueOf( user.getPhotoUrl());
 
 
         listOfMessages = (ListView) findViewById(R.id.list_of_messages);
@@ -323,30 +326,30 @@ public class Message extends AppCompatActivity {
 
             }
 
-            @Override
-            public View getView(int position, View view, ViewGroup viewGroup) {
-                ChatMessage chatMessage = getItem(position);
-                if (chatMessage.getId().equals(personId)) {
-
-
-                    view = getLayoutInflater().inflate(R.layout.item_out_message, viewGroup, false);
-
-
-
-
-                } else {
-                    view = getLayoutInflater().inflate(R.layout.item_in_message, viewGroup, false);
-//                    String timeStamps = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
+//            @Override
+//            public View getView(int position, View view, ViewGroup viewGroup) {
+//                ChatMessage chatMessage = getItem(position);
+//                if (chatMessage.getId().equals(personId)) {
 //
-//                    if(chatMessage.getStamp()==timeStamps) {
-//                        Crouton.makeText(getActivity(), "name" + "\t" + chatMessage.getMessageUser() + "\t" + chatMessage.getMessageText(), Style.INFO).show();
-//                    }
-                }
-//generating view}
-                populateView(view, chatMessage, position);
-
-                return view;
-            }
+//
+//                    view = getLayoutInflater().inflate(R.layout.item_out_message, viewGroup, false);
+//
+//
+//
+//
+//                } else {
+//                    view = getLayoutInflater().inflate(R.layout.item_in_message, viewGroup, false);
+////                    String timeStamps = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
+////
+////                    if(chatMessage.getStamp()==timeStamps) {
+////                        Crouton.makeText(getActivity(), "name" + "\t" + chatMessage.getMessageUser() + "\t" + chatMessage.getMessageText(), Style.INFO).show();
+////                    }
+//                }
+////generating view}
+//                populateView(view, chatMessage, position);
+//
+//                return view;
+//            }
 
             @Override
             public int getViewTypeCount() {

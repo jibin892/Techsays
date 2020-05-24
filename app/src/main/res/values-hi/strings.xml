@@ -19,6 +19,11 @@
     <string name="Share">शेयर</string>
     <string name="Callback">वापस कॉल करें</string>
     <string name="Aboutus">हमारे बारे में</string>
+    <string name="payment">
+भुगतान</string>
+    <string name="android">
+Android ऐप डेवलपमेंट
+</string>
     <string name="S">समायोजन</string>
     <string name="UserInfo">उपयोगकर्ता जानकारी</string>
     <string name="Profile" >प्रोफ़ाइल</string>

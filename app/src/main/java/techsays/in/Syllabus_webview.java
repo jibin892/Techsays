@@ -20,6 +20,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+import static android.graphics.Color.GREEN;
+
 public class Syllabus_webview extends AppCompatActivity {
 Intent link;
     WebView web;
@@ -29,7 +31,6 @@ Intent link;
     ProgressBar p;
     Snackbar s;
     SweetAlertDialog pDialog;
-    @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,11 @@ Intent link;
         vie=findViewById(R.id.vie11);
 link=getIntent();
 
-        s = Snackbar.make(vie, "PLZ WAIT ", Snackbar.LENGTH_LONG);
+        s = Snackbar.make(vie, " Please wait... ", Snackbar.LENGTH_LONG);
         View snackBarView = s.getView();
-        snackBarView.setBackgroundColor(R.color.colorPrimary);
+        snackBarView.setBackgroundColor(GREEN);
         s.show();
-        Toast.makeText(getApplicationContext(),link.getStringExtra("syllabus"),Toast.LENGTH_LONG).show();
+      //  Toast.makeText(getApplicationContext(),link.getStringExtra("syllabus"),Toast.LENGTH_LONG).show();
 
         web.setInitialScale(1);
         web.getSettings().setLoadWithOverviewMode(true);

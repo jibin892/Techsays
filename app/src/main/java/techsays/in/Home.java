@@ -1,5 +1,6 @@
 package techsays.in;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
@@ -7,10 +8,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -29,6 +32,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,10 +53,18 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
@@ -65,11 +77,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener ,Nav
 final int RequestPermissionCode=1;
     SharedPreferences phonepref;
     TextView usernamedisplay;
-    ImageView profileimghome,nav;
+    ImageView profileimghome,nav,msg;
     SharedPreferences sh1, sh;
     ImageView profileimglogout;
     private BottomSheetDialog bottomSheetDialog;
     FloatingActionButton contact;
+    private DatabaseReference myRef;
+    DatabaseReference reference;
+
+
     boolean doubleBackToExitPressedOnce = false;
 ConstraintLayout constraintLayout;
     SharedPreferences she;
@@ -86,19 +102,23 @@ loadLocale();
             EnableRuntimePermission();
             MyReceiver = new MyReceiver();
             broadcastIntent();
-
+userdata();
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 constraintLayout=findViewById(R.id.ert);
         she=getSharedPreferences("log",MODE_PRIVATE);
         SharedPreferences.Editor e=she.edit();
         e.putBoolean("id",true);
         e.apply();
+
             phonepref=getSharedPreferences("data",MODE_PRIVATE);
             sh1 = getSharedPreferences("LOGINDATA", MODE_PRIVATE);
             sh = getSharedPreferences("log", MODE_PRIVATE);
             bottomSheetDialog = new BottomSheetDialog(Home.this);
             View bottomSheetDialogView = getLayoutInflater().inflate(R.layout.logout_and_info, null);
             bottomSheetDialog.setContentView(bottomSheetDialogView);
+
+            msg = findViewById(R.id.msghome);
+
             profileimghome = findViewById(R.id.profileimghome);
             usernamedisplay = findViewById(R.id.usernamedisplay);
             final DrawerLayout drawer = findViewById(R.id.drawer_layout1);
@@ -163,7 +183,19 @@ constraintLayout=findViewById(R.id.ert);
 
 
 
+msg.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
 
+
+        final Intent msgss = new Intent(Home.this, Message.class);
+
+        startActivity(msgss);
+
+
+
+    }
+});
 
 
 
@@ -176,9 +208,12 @@ constraintLayout=findViewById(R.id.ert);
 
     }
 
+    private void userdata() {
 
 
-        private void setupViewPager() {
+
+    }
+    private void setupViewPager() {
         HomePageAdapter adapter = new HomePageAdapter(Home.this.getSupportFragmentManager());
         adapter.addFragment(new CourseFirstFragment());
         adapter.addFragment(new OnlineclassFragment());
@@ -407,6 +442,16 @@ constraintLayout=findViewById(R.id.ert);
 
         }
 
+        else if (id == R.id.nav_payment) {
+
+
+            final Intent pay = new Intent(Home.this, Payment.class);
+
+            startActivity(pay);
+
+
+        }
+
         else if (id == R.id.nav_msg) {
 
 
@@ -439,24 +484,32 @@ constraintLayout=findViewById(R.id.ert);
         }
         else if (id == R.id.nav_callbackk) {
 
-            new SweetAlertDialog(Home.this, SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("Are you sure?")
-                    .setContentText("Call Back Now")
-                    .setConfirmText("Yes!")
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(
+                    Home.this);
+            builder.setTitle("Are you sure?");
+            builder.setMessage("Call Back Now");
+            builder.setNegativeButton("NO",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+                            Toast.makeText(getApplicationContext(),"Cancel",Toast.LENGTH_LONG).show();
+                        }
+                    });
+            builder.setPositiveButton("YES",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
                             callback();
-                            sDialog.dismissWithAnimation();
                         }
-                    })
-                    .setCancelButton("Not Now", new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            sDialog.dismissWithAnimation();
-                        }
-                    })
-                    .show();
+                    });
+            builder.show();
+
+
+
+
+
+
         }
 
         else if (id == R.id.nav_share) {
@@ -546,7 +599,7 @@ constraintLayout=findViewById(R.id.ert);
         } else {
 
             ActivityCompat.requestPermissions(Home.this, new String[]{
-                    Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.ACCESS_WIFI_STATE,Manifest.permission.CHANGE_NETWORK_STATE,Manifest.permission.CHANGE_WIFI_STATE}, RequestPermissionCode);
+                    Manifest.permission.CALL_PHONE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.ACCESS_WIFI_STATE,Manifest.permission.CHANGE_NETWORK_STATE,Manifest.permission.CHANGE_WIFI_STATE,Manifest.permission.WRITE_EXTERNAL_STORAGE}, RequestPermissionCode);
 
 
         }

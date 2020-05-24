@@ -34,7 +34,7 @@ import com.squareup.picasso.Picasso;
 import static android.content.Context.MODE_PRIVATE;
 public class CourseFirstFragment extends Fragment  {
     View root;
-    TextView androidbtn,digitalbtn;
+    TextView androidbtn,digitalbtn,WebsiteDevelopent;
     ImageView profileimghome,nav,msg;
     SharedPreferences sh1, sh;
     ImageView profileimglogout;
@@ -42,6 +42,8 @@ public class CourseFirstFragment extends Fragment  {
 FloatingActionButton contact;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         sh1 = requireActivity().getSharedPreferences("LOGINDATA", MODE_PRIVATE);
         sh = getActivity().getSharedPreferences("log", MODE_PRIVATE);
@@ -50,11 +52,11 @@ androidbtn=root.findViewById(R.id.androidcouresebtn);
 
         digitalbtn=root.findViewById(R.id.digitalmarktinfo);
 
+        WebsiteDevelopent=root.findViewById(R.id.websitedevelopentebtn);
 
 
 
 
-final String a="hfgdghf";
 
 androidbtn.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -62,7 +64,6 @@ androidbtn.setOnClickListener(new View.OnClickListener() {
 
 
          Intent log = new Intent(getActivity(), AndroidCourese.class);
-        log.putExtra("aa",a);
         startActivity(log);
 
 
@@ -80,7 +81,6 @@ androidbtn.setOnClickListener(new View.OnClickListener() {
 
 
                 Intent log = new Intent(getActivity(), Digital_MarketingCourese.class);
-                log.putExtra("aa",a);
                 startActivity(log);
 
 
@@ -91,6 +91,20 @@ androidbtn.setOnClickListener(new View.OnClickListener() {
         });
 
 
+        WebsiteDevelopent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent log = new Intent(getActivity(), Website_developent_courese.class);
+                startActivity(log);
+
+
+            }
+
+
+
+        });
 
         return root;
     }
