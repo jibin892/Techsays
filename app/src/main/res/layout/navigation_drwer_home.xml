@@ -23,6 +23,12 @@
 
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation">
+
+
+    </com.google.android.material.navigation.NavigationView>
+
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -70,7 +70,7 @@ RelativeLayout relativeLayout;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drwer);
         setupBottomNavigationView();
-       phonepref=getSharedPreferences("data",MODE_PRIVATE);
+       phonepref=getSharedPreferences("databasedata",MODE_PRIVATE);
 relativeLayout=findViewById(R.id.proview);
         sh = getSharedPreferences("log", MODE_PRIVATE);
 
@@ -247,6 +247,8 @@ relativeLayout=findViewById(R.id.proview);
                         public void onClick(DialogInterface dialog,
                                             int which) {
                             callback();
+                         //   Toast.makeText(getApplicationContext(),phonepref.getString("phone",null),Toast.LENGTH_LONG).show();
+
                         }
                     });
             builder.show();

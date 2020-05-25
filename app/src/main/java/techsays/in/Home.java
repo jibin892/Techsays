@@ -59,6 +59,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 
@@ -82,9 +84,8 @@ final int RequestPermissionCode=1;
     ImageView profileimglogout;
     private BottomSheetDialog bottomSheetDialog;
     FloatingActionButton contact;
-    private DatabaseReference myRef;
-    DatabaseReference reference;
 
+    String ph;
 
     boolean doubleBackToExitPressedOnce = false;
 ConstraintLayout constraintLayout;
@@ -96,21 +97,28 @@ ConstraintLayout constraintLayout;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
 
-loadLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drwer_home);
             EnableRuntimePermission();
             MyReceiver = new MyReceiver();
             broadcastIntent();
-userdata();
-            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-constraintLayout=findViewById(R.id.ert);
+       user = FirebaseAuth.getInstance().getCurrentUser();
+constraintLayout=findViewById(R.id.homeview);
         she=getSharedPreferences("log",MODE_PRIVATE);
         SharedPreferences.Editor e=she.edit();
         e.putBoolean("id",true);
         e.apply();
 
-            phonepref=getSharedPreferences("data",MODE_PRIVATE);
+
+            loadLocale();
+            userdataload();
+
+
+
+
+
+
+            phonepref=getSharedPreferences("databasedata",MODE_PRIVATE);
             sh1 = getSharedPreferences("LOGINDATA", MODE_PRIVATE);
             sh = getSharedPreferences("log", MODE_PRIVATE);
             bottomSheetDialog = new BottomSheetDialog(Home.this);
@@ -208,11 +216,47 @@ msg.setOnClickListener(new View.OnClickListener() {
 
     }
 
-    private void userdata() {
+    private void userdataload() {
+        final FirebaseUser userss = FirebaseAuth.getInstance().getCurrentUser();
+       DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("REGISTRATION").child(userss.getDisplayName());
+        mUserDatabase.keepSynced(true);
+
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String id = dataSnapshot.child("id").getValue().toString();
+                 ph = dataSnapshot.child("phone").getValue().toString();
+                String name = dataSnapshot.child("personName").getValue().toString();
+                String photo = dataSnapshot.child("personPhoto").getValue().toString();
+                String email = dataSnapshot.child("personEmail").getValue().toString();
 
 
 
-    }
+                final SharedPreferences sh=getSharedPreferences("databasedata",MODE_PRIVATE);
+
+                SharedPreferences.Editor ee=sh.edit();
+
+                ee.putString("id",id);
+                ee.putString("name",name);
+                ee.putString("email",email);
+                ee.putString("image",photo);
+                ee.putString("phone",ph);
+                ee.apply();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+            }
+
+
+
+
     private void setupViewPager() {
         HomePageAdapter adapter = new HomePageAdapter(Home.this.getSupportFragmentManager());
         adapter.addFragment(new CourseFirstFragment());
@@ -626,23 +670,18 @@ msg.setOnClickListener(new View.OnClickListener() {
     }
     public void callback()
     {
+
+     //   Toast.makeText(Home.this, phonepref.getString("phone",null)+user.getDisplayName(),Toast.LENGTH_SHORT).show();
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://techsays.in/sms.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        Snackbar.make(constraintLayout,response, BaseTransientBottomBar.LENGTH_LONG).show();
-/* if (response.equals("success")) {
+                        Snackbar.make(constraintLayout,response,BaseTransientBottomBar.LENGTH_LONG).show();
 
-Toast.makeText(MainActivity.this, "success upload", Toast.LENGTH_SHORT).show();
-//Creating a shared preference
 
-} else {
-Toast.makeText(MainActivity.this, "success failed", Toast.LENGTH_SHORT).show();
-//If the server response is not success
-//Displaying an error message on toast
-// Toast.makeText(VerificationActivity.this,"success upload fail",Toast.LENGTH_SHORT).show();
-}*/
+
                     }
                 },
                 new Response.ErrorListener() {

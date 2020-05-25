@@ -2,6 +2,7 @@ package techsays.in;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -16,12 +17,21 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -29,6 +39,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -57,7 +69,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.widget.Toast.LENGTH_LONG;
 
-public class Message extends AppCompatActivity {
+public class Message extends AppCompatActivity implements View.OnClickListener {
     FirebaseListAdapter<ChatMessage> adapter;
     FloatingActionButton fab,fab6, cam;
     SweetAlertDialog pDialog;
@@ -65,12 +77,13 @@ public class Message extends AppCompatActivity {
     ListView listOfMessages;
     CircleImageView img;
     View view;
-    ImageView image_message_profile;
+    ImageView image_message_profile,mesagepic,msgbottamsheet;
     String personPhoto;
     GoogleSignInClient mGoogleSignInClient;
     EditText input;
     String personName;
     String personId;
+    ConstraintLayout  views;
     String personEmail;
     private Uri filePath;
     FirebaseStorage storage;
@@ -79,19 +92,22 @@ public class Message extends AppCompatActivity {
     // request code
     ProgressDialog progress;
     private BottomSheetDialog bottomSheetDialog;
-
+ FirebaseUser user;
     ImageView imgmsg,ivCloseShare;
     TextView messageTime,tobarausernmae;
     DatabaseReference reference;
     DatabaseReference a;
     TextView messageUser;
+    SharedPreferences phonepref;
     SharedPreferences sh1;
+    TextView sendernname;
     private final int PICK_IMAGE_REQUEST = 71;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message);
 
+        phonepref=getSharedPreferences("databasedata",MODE_PRIVATE);
 
 //        ivCloseShare = (ImageView) findViewById(R.id.ivCloseShare);
 //        tobarausernmae = (TextView) findViewById(R.id.tobarausernmae);
@@ -103,9 +119,16 @@ public class Message extends AppCompatActivity {
 
         fab.setVisibility(View.INVISIBLE);
         // fab.setEnabled(false);
-        imgmsg = (ImageView) findViewById(R.id.imgmsg);
+       mesagepic =  findViewById(R.id.mesgpic);
+        msgbottamsheet =  findViewById(R.id.msgbottamsheet);
+        sendernname =  findViewById(R.id.mesgnamesender);
+
+   user = FirebaseAuth.getInstance().getCurrentUser();
+sendernname.setText(user.getDisplayName());
+        Picasso.get().load(String.valueOf(user.getPhotoUrl())).into(mesagepic);
+
         input = (EditText) findViewById(R.id.input);
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        views =  findViewById(R.id.msgvie);
 
         sh1 = getSharedPreferences("LOGINDATA", MODE_PRIVATE);
 
@@ -115,6 +138,30 @@ public class Message extends AppCompatActivity {
         personEmail =  user.getEmail();
         personId =  user.getUid();
         personPhoto = String.valueOf( user.getPhotoUrl());
+        bottomSheetDialog = new BottomSheetDialog(Message.this);
+        View bottomSheetDialogView = getLayoutInflater().inflate(R.layout.callbackmsg, null);
+        bottomSheetDialog.setContentView(bottomSheetDialogView);
+
+
+        TextView msgname = bottomSheetDialogView.findViewById(R.id.msggname);
+        ImageView pic = bottomSheetDialogView.findViewById(R.id.msggphoto);
+        TextView emailmsg = bottomSheetDialogView.findViewById(R.id.msggemail);
+        Button msgcalback = bottomSheetDialogView.findViewById(R.id.msgcalback);
+        Picasso.get().load(String.valueOf(user.getPhotoUrl())).into(pic);
+        msgname.setText(user.getDisplayName());
+        emailmsg.setText(user.getEmail());
+
+
+
+        msgcalback.setOnClickListener(this);
+
+        msgbottamsheet.setOnClickListener(this);
+
+
+
+
+
+
 
 
         listOfMessages = (ListView) findViewById(R.id.list_of_messages);
@@ -396,6 +443,54 @@ public class Message extends AppCompatActivity {
 
 
 
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+
+        switch (id) {
+
+            case R.id.msgbottamsheet:
+                bottomSheetDialog.show();
+                break;
+            case R.id.msgcalback:
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,"https://techsays.in/sms.php",
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                Snackbar.make(views,response, BaseTransientBottomBar.LENGTH_LONG).show();
+
+
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+//You can handle error here if you want
+                            }
+
+                        }) {
+
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+//Adding parameters to request
+                        params.put("phone", phonepref.getString("phone",null));
+                        params.put("name",user.getDisplayName());
+//returning parameter
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(Message.this);
+                requestQueue.add(stringRequest);
+                break;
+
+
+        }
+
+    }
 
     }
 

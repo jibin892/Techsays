@@ -56,7 +56,9 @@ public class Registration extends AppCompatActivity {
                     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     DatabaseReference object = FirebaseDatabase.getInstance().getReference();
-                    DatabaseReference namesRef = object.child("REGISTRATION").push();
+                    String uid = user.getDisplayName();
+
+                    DatabaseReference namesRef = object.child("REGISTRATION").child(uid);
                     Map<String, Object> map = new HashMap<>();
                     map.put("personName", user.getDisplayName());
                     map.put("personEmail",user.getEmail());
@@ -65,6 +67,7 @@ public class Registration extends AppCompatActivity {
                     map.put("phone", phone.getText().toString());
 
                     String mGroupId = object.push().getKey();
+
                     map.put("personId", mGroupId);
                     String timeStamp = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
                     map.put("stamp", timeStamp);
